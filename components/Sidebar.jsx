@@ -134,7 +134,7 @@ function ResponsiveDrawer(props) {
                 <ListItemText inset primary="2.2 - 3.6" />
               </ListItem>
               </Link>
-              <Link href='/kanefusa/k2.4-3.8'>
+              <Link href='/kanefusa/k2.4-3.8/k2438'>
               <ListItem button className={classes.nested}>
                
                 <ListItemText inset primary="2.4 - 3.8" />

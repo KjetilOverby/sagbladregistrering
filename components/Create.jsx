@@ -2,13 +2,38 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { makeStyles, Typography, TextField, Button } from '@material-ui/core';
 import Link from 'next/link';
+import { yellow } from '@material-ui/core/colors';
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  header: {
+     color: 'white',
+     margin: '1em 0 0 1.5em'
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    padding: '3em',
+    width: '30em',
+    height: '30em',
+    marginLeft: '5rem',
+    marginTop: '5rem',
+    background: '#dcdcdc',
+    borderRadius: '5px',
+  },
+  btn : {
+    margin: '5em'
+  }
+}));
 const Create = (props) => {
   const classes = useStyles();
 
-  const [form, setForm] = useState({ serial: '', registDate: '' });
+ 
 
+  const [form, setForm] = useState({})
+
+ 
+ 
   const createBlade = async () => {
     try {
       const res = await fetch(props.url, {
@@ -25,20 +50,23 @@ const Create = (props) => {
       console.log(error);
     }
   };
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     createBlade();
+    
+   
   };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
+  
+  
   return (
     <div>
-      <Typography>Registrer {props.header}</Typography>
-      <form>
+      <Typography className={classes.header} variant='h2'>Legg til {props.header} blader</Typography>
+      <form className={classes.form}>
         <TextField
           name="serial"
           variant="outlined"
@@ -57,8 +85,13 @@ const Create = (props) => {
       </form>
 
       <Link href={props.back}>
-        <Button variant="outlined">Back</Button>
+        <Button className={classes.btn} color='secondary' variant="contained">Back</Button>
       </Link>
+    {/* {newBlade.map(blade => 
+       <div>
+         {blade.serial}
+       </div>
+    )} */}
     </div>
   );
 };

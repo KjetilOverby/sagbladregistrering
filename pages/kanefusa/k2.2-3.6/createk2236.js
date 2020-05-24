@@ -1,14 +1,14 @@
 
 
 import Create from '../../../components/Create';
-
+import baseUrl from '../../../utils/baseUrl';
 const create2236k = () => {
  
   return (
     <div>
       <Create
         header='2.2 - 3.6'
-        url='http://localhost:3000/api/k2236api'
+        url={`${baseUrl}/api/k2236api`}
         back='/kanefusa/k2.2-3.6/k2236'
        />
     </div>

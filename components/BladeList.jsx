@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
   }
 }));
-const BladeList = ({ blades, header }) => {
+const BladeList = ({ blades, header, createLink, editLink1, editLink2, viewLink }) => {
   const [backgroundColor, setBackgroundColor] = useState('red');
 
   // const bladeData = JSON.parse(data);
@@ -82,7 +82,7 @@ const BladeList = ({ blades, header }) => {
         <div className={classes.textTopContiner}>
         
           <Typography variant='h5'>Antall sagblad: {blades.data.length}</Typography>
-          <Link href='/kanefusa/k2.2-3.6/createk2236'>
+          <Link href={createLink}>
           <Button color='primary' className={classes.leggTilBtn} variant='contained'>Legg til sagblad</Button>
           </Link>
         </div>
@@ -111,10 +111,10 @@ const BladeList = ({ blades, header }) => {
                 {blade.registDate}
               </Typography>
               <Typography>{blade.performer.length}</Typography>
-              <Link href={`/k2236_id/${blade._id}/edit2236k`}>
+              <Link href={`${editLink1}/${blade._id}${editLink2}`}>
               <Button className={classes.btn} variant='outlined'>Rediger</Button>
               </Link>
-              <Link href={`/k2236_id/${blade._id}`}>
+              <Link href={`${viewLink}/${blade._id}`}>
               <Button className={classes.btn} variant='contained' color='secondary'>Vis</Button>
               </Link>
             </div>

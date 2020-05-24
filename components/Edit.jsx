@@ -3,8 +3,9 @@ import fetch from 'isomorphic-unfetch';
 import { TextField, Button, Typography } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import baseUrl from '../utils/baseUrl';
 
-const Edit = ({ blade, header, back }) => {
+const Edit = ({ blade, header, back, updateUrl }) => {
   const [form, setForm] = useState({ performer: [''], date: [''] });
   const router = useRouter();
   console.log(form);
@@ -22,7 +23,7 @@ const Edit = ({ blade, header, back }) => {
   const updateBlade = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/k2236api/${router.query.id}`,
+        `${baseUrl}/api/${updateUrl}/${router.query.id}`,
         {
           method: 'PUT',
           headers: {

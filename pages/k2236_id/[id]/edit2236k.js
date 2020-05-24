@@ -1,5 +1,6 @@
 
 import fetch from 'isomorphic-unfetch';
+import baseUrl from '../../../utils/baseUrl';
 
 
 import Edit from '../../../components/Edit';
@@ -11,6 +12,7 @@ const edit2236k = ({ blade }) => {
        header="2.2 - 3.6"
        blade={blade} 
        back='/kanefusa/k2.2-3.6/k2236'
+       updateUrl='k2236api'
        />
     </div>
   );
@@ -18,7 +20,7 @@ const edit2236k = ({ blade }) => {
 export default edit2236k;
 
 edit2236k.getInitialProps = async ({ query: { id } }) => {
-  const res = await fetch(`http://localhost:3000/api/k2236api/${id}`);
+  const res = await fetch(`${baseUrl}/api/k2236api/${id}`);
   const { data } = await res.json();
   return { blade: data };
 };
