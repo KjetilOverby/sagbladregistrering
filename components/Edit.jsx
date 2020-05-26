@@ -50,6 +50,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
           label="Serial"
           onChange={handleChange}
           value={form.performer}
+          formControlName='perform'
         />
         <TextField
           variant="outlined"

@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Button, makeStyles, Card, CardActionArea, CardContent, CardMedia, Typography, CardActions } from '@material-ui/core';
+import { Button, makeStyles, Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Grid } from '@material-ui/core';
 import React from 'react';
 import Link from 'next/link';
 import baseUrl from '../utils/baseUrl';
@@ -22,7 +22,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   const useStyles = makeStyles({
 
     container: {
-      margin: '5em'
+      margin: '5em',
+       justifyContent: 'space-around'
     },
     kanefusa: {
       fontStyle: 'italic'
@@ -42,7 +43,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     },
     root: {
       maxWidth: 545,
-      height: 845
+      height: 'auto',
+      paddingBottom: '2rem'
     },
     img: {
       height: 300
@@ -54,11 +56,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     },
     retipContainer: {
       display: 'flex',
-      height: '20em',
-      marginTop: '1rem'
+      height: 'auto',
+      marginTop: '1rem',
+      marginBottom: '3rem',
+      background: '#dcdcdc',
+      padding: '1rem',
+      borderRadius: '5px',
+      boxShadow: '2px 2px 5px gray'
     },
     company: {
-      width: '35%'
+      width: '55%'
     },
     date: {
       width: '45%',
@@ -67,9 +74,54 @@ const Transition = React.forwardRef(function Transition(props, ref) {
       color: 'white',
       fontWeight: 'bold',
       background: 'red',
+      minHeight: '3rem',
+      
       "&:hover" : {
         background: '#d80f0f'
-      }
+      },
+     
+    },
+    backBtn: {
+       minHeight: '3rem',
+       width: '10rem'
+    },
+    dotContainer: {
+       display: 'flex',
+
+    },
+    colorDot1: {
+      height: '1.3rem',
+      width: '1.3rem',
+      borderRadius: '50%',
+      background: '#90ed90',
+      marginRight: '1rem'
+    },
+    colorDot2: {
+      height: '1.3rem',
+      width: '1.3rem',
+      borderRadius: '50%',
+      background: '#ffd700',
+      marginRight: '1rem'
+    },
+    colorDot3: {
+      height: '1.3rem',
+      width: '1.3rem',
+      borderRadius: '50%',
+      background: '#f16161',
+      marginRight: '1rem'
+    },
+    commentContainer: {
+       width: '45em',
+       background: 'gray',
+       padding: '1rem',
+       borderRadius: '5px'
+    },
+    commentHeader: {
+      color: '#dcdcdc',
+      marginBottom: '2rem'
+    },
+    comment: {
+      color: '#dcdcdc'
     }
   })
 const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
@@ -101,7 +153,9 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
     }
   };
   return (
-    <div className={classes.container}>
+    <>
+    <Grid container direction='row' className={classes.container}>
+    <Grid item>
 
 <Card className={classes.root}>
       <CardActionArea>
@@ -109,8 +163,8 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="https://lh3.googleusercontent.com/proxy/m_7knY5Vb6MH94NXtdk-xxtQzwc-wCZKbhGwkTgKmNB2gYv0hBB826TrV-AiYtdn8ZtL8W3MPkuufz0lMXlwtYNyfg8vRLo"
-          title="Contemplative Reptile"
+          image="https://www.hds-group.de/wp-content/uploads/2016/07/hauptbild_kreissaegeblaetter.jpg"
+          title="SawBlade"
           className={classes.img}
         />
         <CardContent>
@@ -142,12 +196,23 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
              </div>
             
           </div>
+          <div className={classes.dotContainer}>
+          {blade.performer.length < 2 && (
+                <div className={classes.colorDot1}></div>
+              )}
+              {blade.performer.length === 2 && (
+                <div className={classes.colorDot2}></div>
+              )}
+              {blade.performer.length > 2 && (
+                <div className={classes.colorDot3}></div>
+              )}
           <Typography>Bladet er omloddet {blade.performer.length} {blade.performer.length === 1 ? 'gang' : 'ganger'}.</Typography>
+       </div>
         </CardContent>
       </CardActionArea>
       <CardActions>
       <Link href={back}>
-        <Button size="small" color="primary">
+        <Button className={classes.backBtn} variant='contained' size="small" color="primary">
           Tilbake
         </Button>
         </Link>
@@ -156,10 +221,21 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
         </Button>
       </CardActions>
     </Card>
-      
-      
-     
+    </Grid>
+    <Grid item>
+    <Typography className={classes.commentHeader} variant='h4'>Anmerkninger</Typography>
+      <div className={classes.commentContainer}>
+        <Typography className={classes.comment} variant='h6'>{blade.comment[0]}</Typography>
+        <Typography className={classes.comment} variant='h6'>{blade.comment[1]}</Typography>
+        <Typography className={classes.comment} variant='h6'>{blade.comment[2]}</Typography>
+        <Typography className={classes.comment} variant='h6'>{blade.comment[3]}</Typography>
+        <Typography className={classes.comment} variant='h6'>{blade.comment[4]}</Typography>
+        <Typography className={classes.comment} variant='h6'>{blade.comment[5]}</Typography>
+        <Typography className={classes.comment} variant='h6'>{blade.comment[6]}</Typography>
+    </div>
+</Grid>
 
+</Grid>
 
       <div>
      
@@ -191,8 +267,8 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
     </div>
 
 
-
-    </div>
+</>
+    
   );
 };
 

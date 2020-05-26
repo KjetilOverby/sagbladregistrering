@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const K2438Schema = new mongoose.Schema({
   serial: {
     type: String,
-    required: true
+    required: true,
+    unique: true
     
   },
   registDate: {
@@ -16,6 +17,12 @@ const K2438Schema = new mongoose.Schema({
   
   date: {
       type: [String]
+  },
+  comment: {
+    type: [String]
+  },
+  commentDate: {
+    type: [String]
   }
 });
 

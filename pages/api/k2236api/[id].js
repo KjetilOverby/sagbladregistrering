@@ -1,5 +1,6 @@
 import dbConnect from '../../../utils/dbConnect';
 import K2236 from '../../../models/K2236';
+import { formatMs } from '@material-ui/core';
 
 dbConnect();
 
@@ -23,9 +24,15 @@ export default async (req, res) => {
       break;
     case 'PUT':
       try {
-        const k2236e = await K2236.findByIdAndUpdate(id, req.body, {
-          $push: {performer: req.body}
+        const k2236e = await K2236.findByIdAndUpdate(id, {
+        
+         $push: {performer: req.body.performer, date: req.body.date}, 
+          
+         
+         
+         
         });
+        console.log(req.body.date);
         if (!k2236e) {
           return res.status(400).json({ success: false });
         }

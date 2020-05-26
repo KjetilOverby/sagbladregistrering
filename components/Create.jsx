@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { makeStyles, Typography, TextField, Button } from '@material-ui/core';
 import Link from 'next/link';
 import { yellow } from '@material-ui/core/colors';
+import { array } from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -28,11 +29,15 @@ const useStyles = makeStyles((theme) => ({
 const Create = (props) => {
   const classes = useStyles();
 
- 
+   const [duplicatError, setDuplicatError] = useState(false)
+   const [duplicatErrorText, setDuplicatErrorText] = useState(false)
 
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({serial: '', registDate: ''})
+  const [log, setLog] = useState([])
+   
+  console.log(form);
+  
 
- 
  
   const createBlade = async () => {
     try {
@@ -45,9 +50,13 @@ const Create = (props) => {
         //body: BSON.serialize(form)
         body: JSON.stringify(form),
         // body: form
+      
       });
-    } catch (error) {
-      console.log(error);
+  
+      
+    } catch(err) {
+      console.log('something went wrong' + err);
+     
     }
   };
  
@@ -83,7 +92,7 @@ const Create = (props) => {
           Submit
         </Button>
       </form>
-
+       
       <Link href={props.back}>
         <Button className={classes.btn} color='secondary' variant="contained">Back</Button>
       </Link>

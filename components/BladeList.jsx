@@ -15,8 +15,13 @@ const useStyles = makeStyles((theme) => ({
     transition: '0.4s',
     "&:hover": {
       background: 'gray'
-    }
+    },
+    [theme.breakpoints.down('md')]: {
+      padding: '1.5rem 40em',
+      background: 'red'
   },
+  },
+ 
   textTopContiner: {
     margin: '1rem 0 5em 18rem',
     color: 'white',
@@ -27,38 +32,38 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '3rem'
   },
   tableTextSerial: {
-    marginRight: '10rem',
+    marginRight: '2rem',
     fontWeight: 'bold',
     color: theme.palette.appColor1.main,
-    width: '10em'
+    width: '15em'
   },
   tableTextDate: {
     width: '10em',
-    marginRight: '5rem',
+    marginRight: '3rem'
   },
   colorDot1: {
     height: '1.3rem',
-    width: '1.3rem',
+    minWidth: '1.3rem',
     borderRadius: '50%',
     background: '#90ed90',
-    marginRight: '5rem',
-    marginLeft: '2rem',
+    marginRight: '1rem',
+    marginLeft: '1rem',
   },
   colorDot2: {
     height: '1.3rem',
-    width: '1.3rem',
+    minWidth: '1.3rem',
     borderRadius: '50%',
     background: '#ffd700',
-    marginRight: '5rem',
-    marginLeft: '2rem',
+    marginRight: '1rem',
+    marginLeft: '1rem',
   },
   colorDot3: {
     height: '1.3rem',
-    width: '1.3rem',
+    minWidth: '1.3rem',
     borderRadius: '50%',
     background: '#f16161',
-    marginRight: '5rem',
-    marginLeft: '2rem',
+    marginRight: '1rem',
+    marginLeft: '1rem',
   },
   btn: {
     color: 'white',
