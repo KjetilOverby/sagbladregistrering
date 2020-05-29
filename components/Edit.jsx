@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import baseUrl from '../utils/baseUrl';
 
 const Edit = ({ blade, header, back, updateUrl }) => {
-  const [form, setForm] = useState({ performer: [''], date: [''] });
+  const [form, setForm] = useState({  });
   const router = useRouter();
   console.log(form);
 
@@ -58,6 +58,12 @@ const Edit = ({ blade, header, back, updateUrl }) => {
           onChange={handleChange}
           name="date"
           value={form.date}
+        />
+        <TextField 
+        name='comment'
+        label='Kommentar'
+        onChange={handleChange}
+        variant="outlined"
         />
         <Button onClick={handleSubmit} variant="outlined">
           Submit

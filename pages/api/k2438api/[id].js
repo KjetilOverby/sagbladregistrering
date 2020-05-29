@@ -23,8 +23,13 @@ export default async (req, res) => {
       break;
     case 'PUT':
       try {
-        const k2438e = await K2438.findByIdAndUpdate(id, req.body, {
-          $push: {performer: req.body}
+        const k2438e = await K2438.findByIdAndUpdate(id, {
+             
+          $push: {
+            performer: req.body.performer,
+            date: req.body.date,
+            comment: req.body.comment,
+          },
         });
         if (!k2438e) {
           return res.status(400).json({ success: false });

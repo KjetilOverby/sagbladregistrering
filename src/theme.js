@@ -8,19 +8,22 @@ const theme = createMuiTheme({
       main: '#19857b',
     },
     secondary: {
-      main: '#d9b08c',
+      main: '#008b8b',
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#4d4c4c',
+      default: '#023232',
     },
     appColor1: {
-      main: '#d9b08c'
+      main: '#008b8b'
+    },
+    appText: {
+       main: '#58c7ad'
     },
     sidebar: {
-      main: '#4d4c4c'
+      main: '#023232'
     }
   },
   sidebarWidth: {

@@ -24,15 +24,17 @@ export default async (req, res) => {
       break;
     case 'PUT':
       try {
-        const k2236e = await K2236.findByIdAndUpdate(id, {
         
-         $push: {performer: req.body.performer, date: req.body.date}, 
+        const k2236e = await K2236.findByIdAndUpdate(id, {
           
-         
-         
-         
+          $push: {
+            performer: req.body.performer,
+            date: req.body.date,
+            comment: req.body.comment,
+          },
         });
-        console.log(req.body.date);
+       
+       
         if (!k2236e) {
           return res.status(400).json({ success: false });
         }
@@ -40,7 +42,6 @@ export default async (req, res) => {
       } catch (error) {
         res.status(400).json({ success: false });
         console.log(error);
-        
       }
       break;
     case 'DELETE':
