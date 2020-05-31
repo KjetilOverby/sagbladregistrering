@@ -45,13 +45,23 @@ const useStyles = makeStyles((theme) => ({
     margin: '1em 0'
   },
   retipTextContainer: {
-    color: theme.palette.appText.main,
-    marginTop: '10em',
-    marginLeft: '15em'
+    color: theme.palette.primary,
+    minHeight: '20em',
+    marginTop: '4em',
+    marginLeft: '15em',
+    background: theme.palette.appText.main,
+    padding: '2rem',
+    borderRadius: '5px',
+    
   },
   retipText: {
     marginRight: '3em',
     fontSize: '1.5rem'
+  },
+  retipHeader: {
+    color: theme.palette.appText.main,
+    marginLeft: '10em',
+    marginTop: '3.5em'
   }
 }));
 
@@ -197,8 +207,9 @@ const Edit = ({ blade, header, back, updateUrl }) => {
         </Grid>
         </Grid>
         <Grid item>
-
+        <Typography className={classes.retipHeader} variant='h4'>Tidligere omloddinger</Typography>
         <Grid className={classes.retipTextContainer} container>
+          
            <Grid item>
           <Typography className={classes.retipText}>{blade.performer[0]}</Typography>
           <Typography className={classes.retipText}>{blade.performer[1]}</Typography>
