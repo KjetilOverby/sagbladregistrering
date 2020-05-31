@@ -9,7 +9,7 @@ const k2438_id = ({ blade }) => {
        blade={blade}
        deleteUrl={`${baseUrl}/api/k2438api`}
        pushUrl='/kanefusa/k2.4-3.8/k2438'
-       header='Kanefusa 2.4 - 3.8 445 36z'
+       header='Kanefusa 2.4 - 3.8 445 30Z'
        back='/kanefusa/k2.4-3.8/k2438'
         />
     </div>

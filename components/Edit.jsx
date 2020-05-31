@@ -1,14 +1,72 @@
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import { TextField, Button, Typography } from '@material-ui/core';
+import {
+  TextField,
+  Button,
+  Typography,
+  Grid,
+  makeStyles,
+  Container,
+  ThemeProvider,
+} from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import baseUrl from '../utils/baseUrl';
 
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
+
+
+
+const useStyles = makeStyles((theme) => ({
+ 
+  retipInputContainer: {
+    marginTop: '3em',
+    marginBottom: '5em',
+    color: theme.palette.appText.main,
+    borderColor: 'red'
+  },
+  retipInput: {
+    margin: '1rem 0',
+    borderColor: 'red'
+    
+  },
+  btn: {
+    border: `1px solid ${theme.palette.appText.main}`,
+    color: theme.palette.appText.main,
+  },
+  serialHeader: {
+    color: 'red',
+    fontWeight: 'bold',
+    margin: '1em 0'
+  },
+  retipTextContainer: {
+    color: theme.palette.appText.main,
+    marginTop: '10em',
+    marginLeft: '15em'
+  },
+  retipText: {
+    marginRight: '3em',
+    fontSize: '1.5rem'
+  }
+}));
+
 const Edit = ({ blade, header, back, updateUrl }) => {
-  const [form, setForm] = useState({  });
+  const classes = useStyles();
+  const [form, setForm] = useState({ performer: 'Stridsbergs' });
+  const [comment, setComment] = useState('');
   const router = useRouter();
-  console.log(form);
+
+  // const [selectedDate, setSelectedDate] = React.useState(
+  //   new Date('2014-08-18T21:11:54')
+  // );
+  // const handleDateChange = (date) => {
+  //   setSelectedDate(date);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +75,11 @@ const Edit = ({ blade, header, back, updateUrl }) => {
   };
 
   const handleChange = (e) => {
+    
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const handleComment = (e) => {
+    setComment({ ...comment, ['comment']: e.target.value });
   };
 
   const updateBlade = async () => {
@@ -39,42 +101,143 @@ const Edit = ({ blade, header, back, updateUrl }) => {
       console.log(error);
     }
   };
+  const createComment = async () => {
+    try {
+      const res = await fetch(
+        `${baseUrl}/api/${updateUrl}/${router.query.id}`,
+        {
+          method: 'PUT',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          //body: BSON.serialize(form)
+          body: JSON.stringify(comment),
+          // body: form
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleCreateComment = (e) => {
+    e.preventDefault();
+    createComment();
+  };
 
   return (
-    <div>
-      <Typography variant="h1">update: {header}</Typography>
-      <form>
-        <TextField
-          name="performer"
-          variant="outlined"
-          label="Serial"
-          onChange={handleChange}
-          value={form.performer}
-          formControlName='perform'
-        />
-        <TextField
-          variant="outlined"
-          label="RegistDate"
-          onChange={handleChange}
-          name="date"
-          value={form.date}
-        />
-        <TextField 
-        name='comment'
-        label='Kommentar'
-        onChange={handleChange}
-        variant="outlined"
-        />
-        <Button onClick={handleSubmit} variant="outlined">
-          Submit
-        </Button>
-      </form>
+    <Container>
+      <Grid direction="column" container>
+      <Grid  container>
+      <Grid item>
+        <Grid
+          container
+          direction="column"
+          className={classes.retipInputContainer}
+        >
+        <Typography variant='h2'>{header}</Typography>
+          <Typography variant="h4">
+            Legg til omloddinger
+          </Typography>
+          <Typography className={classes.serialHeader} variant='h5'>
+             {blade.serial}
+          </Typography>
 
-      <Link href={back}>
-        <Button variant="outlined">Back</Button>
-      </Link>
-      <h1>{blade.serial}</h1>
-    </div>
+          <form>
+            <Grid item>
+              <TextField
+               
+               className={classes.retipInput}
+                name="performer"
+                variant="outlined"
+                label="Firma"
+                onChange={handleChange}
+                value={form.performer}
+                formControlName="perform"
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                className={classes.retipInput}
+                variant="outlined"
+                label="Dato"
+                onChange={handleChange}
+                name="date"
+                value={form.date}
+              />
+
+            {/*   <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  
+                  disableToolbar
+                  variant="inline"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Date picker inline"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+              </MuiPickersUtilsProvider> */}
+            </Grid>
+            <Grid item>
+              <Button
+                className={classes.btn}
+                onClick={handleSubmit}
+                variant="outlined"
+              >
+                Legg til ommlodding
+              </Button>
+            </Grid>
+          </form>
+        </Grid>
+        </Grid>
+        <Grid item>
+
+        <Grid className={classes.retipTextContainer} container>
+           <Grid item>
+          <Typography className={classes.retipText}>{blade.performer[0]}</Typography>
+          <Typography className={classes.retipText}>{blade.performer[1]}</Typography>
+          <Typography className={classes.retipText}>{blade.performer[2]}</Typography>
+          <Typography className={classes.retipText}>{blade.performer[3]}</Typography>
+          <Typography className={classes.retipText}>{blade.performer[4]}</Typography>
+         
+          </Grid>
+          <Grid item>
+          <Typography className={classes.retipText}>{blade.date[0]}</Typography>
+          <Typography className={classes.retipText}>{blade.date[1]}</Typography>
+          <Typography className={classes.retipText}>{blade.date[2]}</Typography>
+          <Typography className={classes.retipText}>{blade.date[3]}</Typography>
+          <Typography className={classes.retipText}>{blade.date[4]}</Typography>
+          </Grid>
+        </Grid>
+        </Grid>
+
+</Grid>
+
+
+
+        <form>
+          <TextField
+            label="Kommentar"
+            onChange={handleComment}
+            variant="outlined"
+          />
+          <Button onClick={handleCreateComment}>Legg til kommentar</Button>
+        </form>
+
+        <Link href={back}>
+          <Button variant="outlined">Back</Button>
+        </Link>
+
+
+   
+      </Grid>
+    </Container>
   );
 };
 

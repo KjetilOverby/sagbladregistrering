@@ -38,7 +38,8 @@ const theme = createMuiTheme({
       marginLeft: 0
     }
 
-  }
+  },
+
 });
 
 export default theme;
