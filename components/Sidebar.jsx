@@ -135,37 +135,37 @@ function ResponsiveDrawer(props) {
             <Collapse in={openCollapse} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
            
-              <Link href='/kanefusa/k2.4-3.8/k2438'>
+              <Link href='/kanefusa/k2236'>
               <ListItem button className={classes.nested}>
                
                 <ListItemText inset primary="2.2 - 3.6" />
               </ListItem>
               </Link>
-              <Link href='/kanefusa/k2.4-3.8/k2438'>
+              <Link href='/kanefusa/k2438'>
               <ListItem button className={classes.nested}>
                
                 <ListItemText inset primary="2.4 - 3.8" />
               </ListItem>
               </Link>
-              <Link href='/kanefusa/k2.6-4.0/k2640'>
+              <Link href='/kanefusa/k2640'>
               <ListItem button className={classes.nested}>
                
                 <ListItemText inset primary="2.6 - 4.0" />
               </ListItem>
               </Link>
-              <Link href='/kanefusa/k2.8-4.2/k2842'>
+              <Link href='/kanefusa/k2842'>
               <ListItem button className={classes.nested}>
                
                 <ListItemText inset primary="2.8 - 4.2" />
               </ListItem>
               </Link>
-              <Link href='/kanefusa/k3.0-4.4/k3044'>
+              <Link href='/kanefusa/k3040'>
               <ListItem button className={classes.nested}>
                
                 <ListItemText inset primary="3.0 - 4.4" />
               </ListItem>
               </Link>
-              <Link href='/kanefusa/k3.2-4.6/k3246'>
+              <Link href='/kanefusa/k3246'>
               <ListItem button className={classes.nested}>
                
                 <ListItemText inset primary="3.2 - 4.6" />
@@ -234,6 +234,7 @@ function ResponsiveDrawer(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
+    <>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
@@ -288,7 +289,9 @@ function ResponsiveDrawer(props) {
        
       </main>
     </div>
+    </>
   );
+  
 }
 
 ResponsiveDrawer.propTypes = {

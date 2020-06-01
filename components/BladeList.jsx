@@ -111,6 +111,7 @@ const BladeList = ({
   editLink1,
   editLink2,
   viewLink,
+  bladtype
 }) => {
   const [backgroundColor, setBackgroundColor] = useState('red');
   const [searchInput, setSearchInput] = useState('');
@@ -127,7 +128,13 @@ const BladeList = ({
   const filter = bladeList.filter((blade) =>
     blade.serial.includes(searchInput)
   );
-  console.log(filter);
+  const bladeCount = blades.data.filter((blade) =>
+    blade.type.includes(bladtype)
+  );
+
+ 
+
+  
 
   return (
     <div className={classes.mainContainer}>
@@ -138,7 +145,7 @@ const BladeList = ({
      
       <div className={classes.textTopContiner}>
         <Typography variant="h5">
-          Antall sagblad: {blades.data.length}
+          Antall sagblad: {bladeCount.length}
         </Typography>
          
        
@@ -153,8 +160,7 @@ const BladeList = ({
         </Link>
         <TextField inputProps={{ style: { color: 'white', fontSize: '1.5rem'}}}
  color='secondary' className={classes.search} placeholder='Søk' onChange={getSearchInput} />
-        <Typography className={classes.searchResult} variant='h5'>Søkeresultat: </Typography>
-         <Typography variant='h5'>{searchInput === '' ? 'Ingen søk' : filter.length}</Typography>
+    
       </div>
       <Grid className={classes.bladeListHeadersContainer} container>
       <Typography className={classes.serialHeader}>Serial</Typography>
@@ -162,8 +168,14 @@ const BladeList = ({
       <Typography className={classes.omlHeader}>Omloddinger</Typography>
       </Grid>
       {filter.map((blade) => {
+
+      
         return (
-          <div key={blade._id}>
+          <>
+          {blade.type === bladtype && (
+            
+            <div key={blade._id}>
+            
             <div className={classes.bladeContainer}>
               {blade.performer.length < 2 && (
                 <div className={classes.colorDot1}></div>
@@ -174,7 +186,7 @@ const BladeList = ({
               {blade.performer.length > 2 && (
                 <div className={classes.colorDot3}></div>
               )}
-            
+             
               <Typography className={classes.tableTextSerial}>
                 {blade.serial}
               </Typography>
@@ -198,6 +210,8 @@ const BladeList = ({
               </Link>
             </div>
           </div>
+          )}
+          </>
         );
       })}
     </div>
