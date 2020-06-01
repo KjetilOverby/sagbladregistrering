@@ -5,22 +5,22 @@ import baseUrl from '../../../utils/baseUrl';
 
 import Edit from '../../../components/Edit';
 
-const edit2236k = ({ blade }) => {
+const editBlade = ({ blade }) => {
   return (
     <div>
       <Edit
-       header="2.2 - 3.6"
+      
        blade={blade} 
-       back='/kanefusa/k2.2-3.6/k2236'
-       updateUrl='k2236api'
+       back='/globalblades/blades/blade'
+       updateUrl='bladesApi'
        />
     </div>
   );
 };
-export default edit2236k;
+export default editBlade;
 
-edit2236k.getInitialProps = async ({ query: { id } }) => {
-  const res = await fetch(`${baseUrl}/api/k2236api/${id}`);
+editBlade.getInitialProps = async ({ query: { id } }) => {
+  const res = await fetch(`${baseUrl}/api/bladesApi/${id}`);
   const { data } = await res.json();
   return { blade: data };
 };

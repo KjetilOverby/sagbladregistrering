@@ -3,27 +3,27 @@ import fetch from 'isomorphic-fetch';
 import ViewIndex from '../../../components/ViewIndex';
 import baseUrl from '../../../utils/baseUrl';
 
-const k2236_id = ({ blade }) => {
+const blades_id = ({ blade }) => {
   return (
     <div>
       <ViewIndex
        blade={blade}
-       deleteUrl={`${baseUrl}/api/k2236api`}
-       pushUrl='/kanefusa/k2.2-3.6/k2236'
-       header='Kanefusa 2.2 - 3.6 445 36Z'
-       back='/kanefusa/k2.2-3.6/k2236'
+       deleteUrl={`${baseUrl}/api/bladesApi`}
+       pushUrl='/globalblades/blades/blade'
+       header='No header yet'
+       back='/globalblades/blades/blade'
         />
     </div>
   );
 };
 
-k2236_id.getInitialProps = async ({ query: { id } }) => {
-  const res = await fetch(`${baseUrl}/api/k2236api/${id}`);
+blades_id.getInitialProps = async ({ query: { id } }) => {
+  const res = await fetch(`${baseUrl}/api/bladesApi/${id}`);
   const { data } = await res.json();
   return { blade: data };
 };
 
-export default k2236_id;
+export default blades_id;
 
 // const [confirm, setConfirm] = useState(false)
 // const router = useRouter()

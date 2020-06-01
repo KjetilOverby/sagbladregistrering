@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
-const K3246Schema = new mongoose.Schema({
+const BladesSchema = new mongoose.Schema({
+  type: {
+      type: String
+  },
   serial: {
     type: String,
-    required: true,
-    unique: true
+    required: true
     
   },
   registDate: {
@@ -26,4 +28,4 @@ const K3246Schema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.models.K3246 || mongoose.model('K3246', K3246Schema);
+module.exports = mongoose.models.Blades || mongoose.model('Blades', BladesSchema);

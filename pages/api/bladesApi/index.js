@@ -1,6 +1,5 @@
-
 import dbConnect from '../../../utils/dbConnect';
-import K2842 from '../../../models/K2842';
+import Blades from '../../../models/Blades';
 
 dbConnect()
 
@@ -10,18 +9,18 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const k2842 = await K2842.find({})
+                const blades = await Blades.find({})
                    
-                res.status(200).json({ success: true, data: k2842 })
+                res.status(200).json({ success: true, data: blades })
             } catch (error) {
                 res.status(400).json({ success: false });
             }
             break;
             case 'POST':
                 try {
-                    const k2842s = await K2842.create(req.body)
+                    const blades = await Blades.create(req.body)
 
-                    res.status(201).json({ success: true, data: k2842s }) 
+                    res.status(201).json({ success: true, data: blades }) 
                 } catch (error) {
                     res.status(400).json({ success: false });
                     console.log(error);

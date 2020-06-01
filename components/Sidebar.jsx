@@ -23,6 +23,7 @@ import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
+import LanguageIcon from '@material-ui/icons/Language';
 
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
@@ -117,7 +118,12 @@ function ResponsiveDrawer(props) {
         ))} */}
       </List>
       <Divider />
-     
+      <Link href='/globalblades/blades/blade'>
+        <ListItem button>
+        <ListItemIcon><LanguageIcon className={classes.icon} /> }</ListItemIcon>
+          <ListItemText>Alle blad</ListItemText>
+        </ListItem>
+        </Link>
      
             <ListItem button onClick={handleOpenSettings}>
               <ListItemIcon>
@@ -128,9 +134,10 @@ function ResponsiveDrawer(props) {
             </ListItem>
             <Collapse in={openCollapse} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-            <Link href='/kanefusa/k2.2-3.6/k2236'>
+           
+              <Link href='/kanefusa/k2.4-3.8/k2438'>
               <ListItem button className={classes.nested}>
-                
+               
                 <ListItemText inset primary="2.2 - 3.6" />
               </ListItem>
               </Link>

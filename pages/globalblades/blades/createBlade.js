@@ -2,14 +2,14 @@
 
 import Create from '../../../components/Create';
 import baseUrl from '../../../utils/baseUrl';
-const create2236k = () => {
+const createBlade = () => {
  
   return (
     <div>
       <Create
-        header='2.2 - 3.6'
-        url={`${baseUrl}/api/k2236api`}
-        back='/kanefusa/k2.2-3.6/k2236'
+        header='Global'
+        url={`${baseUrl}/api/bladesApi`}
+        back='/globalblades/blades/blade'
        />
     </div>
   )
@@ -17,7 +17,7 @@ const create2236k = () => {
 
 
 
-export default create2236k;
+export default createBlade;
 
 
 

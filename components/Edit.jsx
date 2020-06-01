@@ -151,6 +151,9 @@ const Edit = ({ blade, header, back, updateUrl }) => {
             Legg til omloddinger
           </Typography>
           <Typography className={classes.serialHeader} variant='h5'>
+             {blade.type}
+          </Typography>
+          <Typography className={classes.serialHeader} variant='h5'>
              {blade.serial}
           </Typography>
 

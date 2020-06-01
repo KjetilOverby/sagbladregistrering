@@ -169,7 +169,7 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
         />
         <CardContent>
           <Typography className={classes.kanefusa} gutterBottom variant="h5" component="h2">
-            {header}
+            {blade.type}
           </Typography>
           <Typography className={classes.dato} variant="body2" color="textSecondary" component="p">
             Dato registrert: {blade.registDate}
