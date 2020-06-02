@@ -38,9 +38,8 @@ const useStyles = makeStyles((theme) => ({
       width: drawerWidth,
       flexShrink: 0,
     },
-   
   },
- 
+
   appBar: {
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -48,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuButton: {
-   
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       display: 'none',
@@ -66,11 +64,11 @@ const useStyles = makeStyles((theme) => ({
   draweContainer: {
     background: theme.palette.sidebar.main,
     height: '100%',
-    color: 'white'
+    color: 'white',
   },
   icon: {
-    color: 'white'
-  }
+    color: 'white',
+  },
 }));
 
 function ResponsiveDrawer(props) {
@@ -79,14 +77,14 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const [openCollapse, setOpenCollapse] = React.useState(false);    
-  const [openCollapse2, setOpenCollapse2] = React.useState(false);    
+  const [openCollapse, setOpenCollapse] = React.useState(false);
+  const [openCollapse2, setOpenCollapse2] = React.useState(false);
 
-  function handleOpenSettings(){
-     setOpenCollapse(!openCollapse);
+  function handleOpenSettings() {
+    setOpenCollapse(!openCollapse);
   }
-  function handleOpenSettings2(){
-     setOpenCollapse2(!openCollapse2);
+  function handleOpenSettings2() {
+    setOpenCollapse2(!openCollapse2);
   }
 
   const handleDrawerToggle = () => {
@@ -98,17 +96,21 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-      <Link href='/home'>
-        <ListItem button>
-        <ListItemIcon>{<DashboardIcon className={classes.icon}/> }</ListItemIcon>
-          <ListItemText>Dashboard</ListItemText>
-        </ListItem>
+        <Link href="/home">
+          <ListItem button>
+            <ListItemIcon>
+              {<DashboardIcon className={classes.icon} />}
+            </ListItemIcon>
+            <ListItemText>Dashboard</ListItemText>
+          </ListItem>
         </Link>
-        <Link href='/service'>
-        <ListItem button>
-        <ListItemIcon>{<LocalShippingIcon className={classes.icon}/> }</ListItemIcon>
-          <ListItemText>Service</ListItemText>
-        </ListItem>
+        <Link href="/service">
+          <ListItem button>
+            <ListItemIcon>
+              {<LocalShippingIcon className={classes.icon} />}
+            </ListItemIcon>
+            <ListItemText>Service</ListItemText>
+          </ListItem>
         </Link>
         {/* {['Dashboard', 'Service', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -118,180 +120,171 @@ function ResponsiveDrawer(props) {
         ))} */}
       </List>
       <Divider />
-      <Link href='/globalblades/blades/blade'>
+      <Link href="/globalblades/blades/blade">
         <ListItem button>
-        <ListItemIcon><LanguageIcon className={classes.icon} /> }</ListItemIcon>
+          <ListItemIcon>
+            <LanguageIcon className={classes.icon} /> }
+          </ListItemIcon>
           <ListItemText>Alle blad</ListItemText>
         </ListItem>
-        </Link>
-     
-            <ListItem button onClick={handleOpenSettings}>
-              <ListItemIcon>
-               <FormatListNumberedIcon className={classes.icon} />
-              </ListItemIcon>
-              <ListItemText primary="Kanefusa" />
-              {openCollapse ? <ExpandLess /> : <ExpandMore />}
+      </Link>
+
+      <ListItem button onClick={handleOpenSettings}>
+        <ListItemIcon>
+          <FormatListNumberedIcon className={classes.icon} />
+        </ListItemIcon>
+        <ListItemText primary="Kanefusa" />
+        {openCollapse ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={openCollapse} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <Link href="/kanefusa/k2236">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="2.2 - 3.6" />
             </ListItem>
-            <Collapse in={openCollapse} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-           
-              <Link href='/kanefusa/k2236'>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="2.2 - 3.6" />
-              </ListItem>
-              </Link>
-              <Link href='/kanefusa/k2438'>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="2.4 - 3.8" />
-              </ListItem>
-              </Link>
-              <Link href='/kanefusa/k2640'>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="2.6 - 4.0" />
-              </ListItem>
-              </Link>
-              <Link href='/kanefusa/k2842'>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="2.8 - 4.2" />
-              </ListItem>
-              </Link>
-              <Link href='/kanefusa/k3040'>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="3.0 - 4.4" />
-              </ListItem>
-              </Link>
-              <Link href='/kanefusa/k3246'>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="3.2 - 4.6" />
-              </ListItem>
-              </Link>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="VS-66 høyre" />
-              </ListItem>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="VS-66 venstre" />
-                
-              </ListItem>
-              <ListItem button className={classes.nested}>
-               
-                <ListItemText inset primary="N-blad" />
-              </ListItem>
-
-              <ListItem button className={classes.nested}>
-               
-               <ListItemText inset primary="VS-66 høyre F" />
-             </ListItem>
-             <ListItem button className={classes.nested}>
-              
-               <ListItemText inset primary="VS-66 venstre F" />
-               
-             </ListItem>
-              
-            </List>
-          </Collapse>
-
-          <ListItem button onClick={handleOpenSettings2}>
-              <ListItemIcon>
-               <FormatListNumberedIcon className={classes.icon}/>
-              </ListItemIcon>
-              <ListItemText primary="Nessjø" />
-              {openCollapse2 ? <ExpandLess /> : <ExpandMore />}
+          </Link>
+          <Link href="/kanefusa/k2438">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="2.4 - 3.8" />
             </ListItem>
-            <Collapse in={openCollapse2} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
-                
-                <ListItemText inset primary="2.8 - 4.2" />
-              </ListItem>
-             
-            
-              <ListItem button className={classes.nested}>
-               
-               <ListItemText inset primary="VS-66 høyre" />
-             </ListItem>
-             <ListItem button className={classes.nested}>
-              
-               <ListItemText inset primary="VS-66 venstre" />
-               
-             </ListItem>
-              
-            </List>
-          </Collapse>
-       
+          </Link>
+          <Link href="/kanefusa/k2640">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="2.6 - 4.0" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/k2842">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="2.8 - 4.2" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/k3044">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="3.0 - 4.4" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/k3246">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="3.2 - 4.6" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/kvs-66hoyre">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="VS-66 høyre" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/kvs-66venstre">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="VS-66 venstre" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/kN-blad">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="N-blad" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/kvs-66hoyreF">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="VS-66 høyre F" />
+            </ListItem>
+          </Link>
+          <Link href="/kanefusa/kvs-66venstreF">
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="VS-66 venstre F" />
+            </ListItem>
+          </Link>
+        </List>
+      </Collapse>
 
-
+      <ListItem button onClick={handleOpenSettings2}>
+        <ListItemIcon>
+          <FormatListNumberedIcon className={classes.icon} />
+        </ListItemIcon>
+        <ListItemText primary="Nessjø" />
+        {openCollapse2 ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={openCollapse2} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <Link href='/nessjo/nessjo2842'>
+            <ListItem button className={classes.nested}>
+              <ListItemText inset primary="2.8 - 4.2" />
+            </ListItem>
+          </Link>
+          <Link href='/nessjo/nessjo.vs-66hoyre'>
+          <ListItem button className={classes.nested}>
+            <ListItemText inset primary="VS-66 høyre" />
+          </ListItem>
+          </Link>
+          <Link href='/nessjo/nessjo.vs-66venstre'>
+          <ListItem button className={classes.nested}>
+            <ListItemText inset primary="VS-66 venstre" />
+          </ListItem>
+          </Link>
+        </List>
+      </Collapse>
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <>
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Sagbladregister
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Hidden smUp implementation="css">
-          <Drawer
-            container={container}
-            variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-        <Hidden xsDown implementation="css">
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            variant="permanent"
-            open
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-      </nav>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-       
-      </main>
-    </div>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar position="fixed" className={classes.appBar}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap>
+              Sagbladregister
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <nav className={classes.drawer} aria-label="mailbox folders">
+          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Hidden smUp implementation="css">
+            <Drawer
+              container={container}
+              variant="temporary"
+              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            <Drawer
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              variant="permanent"
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+        </nav>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+        </main>
+      </div>
     </>
   );
-  
 }
 
 ResponsiveDrawer.propTypes = {
