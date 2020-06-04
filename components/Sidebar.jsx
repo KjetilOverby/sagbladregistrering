@@ -90,7 +90,233 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const allBlades = () => {
+    props.setAllBlades(true);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const k2236= () => {
+    props.setAllBlades(false);
+    props.setk2236(true);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const k2438 = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(true);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const k2640 = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(true);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const k2842 = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(true);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const k3044 = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(true);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const k3246 = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(true);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const kvs66hoyre = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(true);
+    props.setkvs66venstre(false);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const kvs66venstre = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(true);
+    props.knBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const knBlad = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.setknBlad(true);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const kvs66hoyreF = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.setknBlad(false);
+    props.setkvs66hoyreF(true);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const kvs66venstreF = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.setknBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(true);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(false);
+  };
+  const nvs66hoyre = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.setknBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(true);
+    props.setnvs66venstre(false);
+  };
+  const nvs66venstre = () => {
+    props.setAllBlades(false);
+    props.setk2236(false);
+    props.setk2438(false);
+    props.setk2640(false);
+    props.setk2842(false);
+    props.setk3044(false);
+    props.setk3246(false);
+    props.setkvs66hoyre(false);
+    props.setkvs66venstre(false);
+    props.setknBlad(false);
+    props.setkvs66hoyreF(false);
+    props.setkvs66venstreF(false);
+    props.setnvs66hoyre(false);
+    props.setnvs66venstre(true);
+  };
+  const test = () => {
+    props.k2236func
+  }
   const drawer = (
     <div className={classes.draweContainer}>
       <div className={classes.toolbar} />
@@ -120,13 +346,18 @@ function ResponsiveDrawer(props) {
         ))} */}
       </List>
       <Divider />
+
       <Link href="/globalblades/blades/blade">
-        <ListItem button>
-          <ListItemIcon>
-            <LanguageIcon className={classes.icon} /> }
-          </ListItemIcon>
-          <ListItemText>Alle blad</ListItemText>
-        </ListItem>
+        <div>
+          <div onClick={allBlades}>
+            <ListItem button>
+              <ListItemIcon>
+                <LanguageIcon className={classes.icon} /> }
+              </ListItemIcon>
+              <ListItemText>Alle blad</ListItemText>
+            </ListItem>
+          </div>
+        </div>
       </Link>
 
       <ListItem button onClick={handleOpenSettings}>
@@ -138,60 +369,83 @@ function ResponsiveDrawer(props) {
       </ListItem>
       <Collapse in={openCollapse} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <Link href="/kanefusa/k2236">
-            <ListItem button className={classes.nested}>
-              <ListItemText inset primary="2.2 - 3.6" />
-            </ListItem>
+          <Link href='/globalblades/blades/blade'>
+            <div>
+              <div>
+                <ListItem onClick={k2236} button className={classes.nested}>
+                  <ListItemText inset primary="2.2 - 3.6" />
+                </ListItem>
+              </div>
+            </div>
           </Link>
-          <Link href="/kanefusa/k2438">
-            <ListItem button className={classes.nested}>
-              <ListItemText inset primary="2.4 - 3.8" />
-            </ListItem>
-          </Link>
-          <Link href="/kanefusa/k2640">
-            <ListItem button className={classes.nested}>
+
+          <ListItem onClick={k2438} button className={classes.nested}>
+            <ListItemText inset primary="2.4 - 3.8" />
+          </ListItem>
+
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={k2640} button className={classes.nested}>
               <ListItemText inset primary="2.6 - 4.0" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/k2842">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={k2842} button className={classes.nested}>
               <ListItemText inset primary="2.8 - 4.2" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/k3044">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={k3044} button className={classes.nested}>
               <ListItemText inset primary="3.0 - 4.4" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/k3246">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={k3246} button className={classes.nested}>
               <ListItemText inset primary="3.2 - 4.6" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/kvs-66hoyre">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+
+            <ListItem onClick={kvs66hoyre} button className={classes.nested}>
               <ListItemText inset primary="VS-66 høyre" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/kvs-66venstre">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={kvs66venstre} button className={classes.nested}>
               <ListItemText inset primary="VS-66 venstre" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/kN-blad">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={knBlad} button className={classes.nested}>
               <ListItemText inset primary="N-blad" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/kvs-66hoyreF">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={kvs66hoyreF}  button className={classes.nested}>
               <ListItemText inset primary="VS-66 høyre F" />
             </ListItem>
+            </div>
           </Link>
-          <Link href="/kanefusa/kvs-66venstreF">
-            <ListItem button className={classes.nested}>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={kvs66venstreF} button className={classes.nested}>
               <ListItemText inset primary="VS-66 venstre F" />
             </ListItem>
+            </div>
           </Link>
         </List>
       </Collapse>
@@ -205,20 +459,24 @@ function ResponsiveDrawer(props) {
       </ListItem>
       <Collapse in={openCollapse2} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <Link href='/nessjo/nessjo2842'>
+          <Link href="#">
             <ListItem button className={classes.nested}>
               <ListItemText inset primary="2.8 - 4.2" />
             </ListItem>
           </Link>
-          <Link href='/nessjo/nessjo.vs-66hoyre'>
-          <ListItem button className={classes.nested}>
-            <ListItemText inset primary="VS-66 høyre" />
-          </ListItem>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={nvs66hoyre} button className={classes.nested}>
+              <ListItemText inset primary="VS-66 høyre" />
+            </ListItem>
+            </div>
           </Link>
-          <Link href='/nessjo/nessjo.vs-66venstre'>
-          <ListItem button className={classes.nested}>
-            <ListItemText inset primary="VS-66 venstre" />
-          </ListItem>
+          <Link href="/globalblades/blades/blade">
+          <div>
+            <ListItem onClick={nvs66venstre} button className={classes.nested}>
+              <ListItemText inset primary="VS-66 venstre" />
+            </ListItem>
+            </div>
           </Link>
         </List>
       </Collapse>

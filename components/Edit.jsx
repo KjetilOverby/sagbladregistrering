@@ -28,19 +28,21 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '3em',
     marginBottom: '5em',
     color: theme.palette.appText.main,
-    borderColor: 'red'
+    background: 'white',
+    padding: '2rem',
+    borderRadius: '10px'
   },
   retipInput: {
-    margin: '1rem 0',
-    borderColor: 'red'
+    margin: '1rem 0'
     
   },
   btn: {
     border: `1px solid ${theme.palette.appText.main}`,
     color: theme.palette.appText.main,
+    marginTop: '2rem'
   },
   serialHeader: {
-    color: 'red',
+    color: '#d74848',
     fontWeight: 'bold',
     margin: '1em 0'
   },
@@ -62,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.appText.main,
     marginLeft: '10em',
     marginTop: '3.5em'
+  },
+  commentContainer: {
+    marginTop: '10em',
+   
   }
 }));
 
@@ -220,6 +226,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
           <Typography className={classes.retipText}>{blade.performer[3]}</Typography>
           <Typography className={classes.retipText}>{blade.performer[4]}</Typography>
          
+         
           </Grid>
           <Grid item>
           <Typography className={classes.retipText}>{blade.date[0]}</Typography>
@@ -233,19 +240,27 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
 </Grid>
 
-
+  
+   <Grid item className={classes.commentContainer}>
 
         <form>
+        <Grid direction='column' container>
+        <Grid item>
           <TextField
             label="Kommentar"
             onChange={handleComment}
             variant="outlined"
           />
-          <Button onClick={handleCreateComment}>Legg til kommentar</Button>
+          </Grid>
+          <Grid item>
+          <Button className={classes.btn} onClick={handleCreateComment}>Legg til kommentar</Button>
+          </Grid>
+          </Grid>
         </form>
+        </Grid>
 
         <Link href={back}>
-          <Button variant="outlined">Back</Button>
+          <Button className={classes.btn} variant="outlined">Back</Button>
         </Link>
 
 

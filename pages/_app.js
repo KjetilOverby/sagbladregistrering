@@ -5,8 +5,11 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import { TextField } from '@material-ui/core';
+import baseUrl from '../utils/baseUrl';
 
 export default function MyApp(props) {
+
+  
   const { Component, pageProps } = props;
 
   React.useEffect(() => {
@@ -26,6 +29,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
+
         <Component {...pageProps} />
         
       </ThemeProvider>
@@ -37,3 +41,4 @@ MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 };
+

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
 import {
   makeStyles,
   Paper,
@@ -8,6 +9,19 @@ import {
   Grid,
 } from '@material-ui/core';
 import Link from 'next/link';
+import K2236 from './Kanefusa/K2236';
+import K2438 from './Kanefusa/K2438';
+import K2640 from './Kanefusa/K2640';
+import K2842 from './Kanefusa/K2842';
+import K3044 from './Kanefusa/K3044';
+import K3246 from './Kanefusa/K3246';
+import Kvs66hoyre from './Kanefusa/Kvs66hoyre';
+import Kvs66venstre from './Kanefusa/Kvs66venstre';
+import KnBlad from './Kanefusa/KnBlad';
+import Kvs66hoyreF from './Kanefusa/KvshoyreF';
+import Kvs66venstreF from './Kanefusa/Kvs66venstreF';
+import Nvs66hoyre from './Nessjø/Nvs66hoyre';
+import Nvs66venstre from './Nessjø/Nvs66venstre';
 const useStyles = makeStyles((theme) => ({
   header: {
     margin: '.6em 5em',
@@ -115,7 +129,26 @@ const BladeList = ({
   editLink1,
   editLink2,
   viewLink,
+  allBlades,
+  k2236,
+  k2438,
+  k2640,
+  k2842,
+  k3044,
+  k3246,
+  kvs66hoyre,
+  kvs66venstre,
+  knBlad,
+  kvs66hoyreF,
+  kvs66venstreF,
+  nvs66hoyre,
+  nvs66venstre,
+  k2236func
+
 }) => {
+  // sawblades
+
+  
   const [backgroundColor, setBackgroundColor] = useState('red');
   const [searchInput, setSearchInput] = useState('');
   // const bladeData = JSON.parse(data);
@@ -125,18 +158,24 @@ const BladeList = ({
 
   const getSearchInput = (e) => {
     setSearchInput(e.target.value);
-    console.log(searchInput);
+    
   };
 
   const filter = bladeList.filter((blade) =>
     blade.serial.includes(searchInput)
   );
-  console.log(filter);
+ 
+
+
+
+  
 
   return (
-    <div className={classes.mainContainer}>
     
-      <Typography className={classes.header} color="primary" variant="h2">
+    <div className={classes.mainContainer}>
+    { allBlades && (
+      <>
+       <Typography className={classes.header} color="primary" variant="h2">
         {header}
       </Typography>
      
@@ -164,7 +203,8 @@ const BladeList = ({
       <Typography className={classes.serialHeader}>Serial</Typography>
       <Typography className={classes.registHeader}>Reg. dato</Typography>
       <Typography className={classes.omlHeader}>Omloddinger</Typography>
-      </Grid>
+      </Grid> 
+
       {filter.map((blade) => {
         return (
           <div key={blade._id}>
@@ -204,7 +244,27 @@ const BladeList = ({
           </div>
         );
       })}
+
+      </>
+       )}
+      
+      {k2236 && <K2236 k2236func={k2236func} blades={blades} />}
+      {k2438 && <K2438 blades={blades} />}
+      {k2640 && <K2640 blades={blades} />}
+      {k2842 && <K2842 blades={blades} />}
+      {k3044 && <K3044 blades={blades} />}
+      {k3246 && <K3246 blades={blades} />}
+      {kvs66hoyre && <Kvs66hoyre blades={blades} />}
+      {kvs66venstre && <Kvs66venstre blades={blades} />}
+      {knBlad && <KnBlad blades={blades} />}
+      {kvs66hoyreF && <Kvs66hoyreF blades={blades} />}
+      {kvs66venstreF && <Kvs66venstreF blades={blades} />}
+      {nvs66hoyre && <Nvs66hoyre blades={blades} />}
+      {nvs66venstre && <Nvs66venstre blades={blades} />}
+    
     </div>
+
+
   );
 };
 

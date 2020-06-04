@@ -11,23 +11,22 @@ import Link from 'next/link';
 const useStyles = makeStyles((theme) => ({
   header: {
     margin: '.6em 5em',
-    
   },
   serialHeader: {
-     marginLeft: '18em',
-      width: '5em',
-      color: theme.palette.appText.main
+    marginLeft: '18em',
+    width: '5em',
+    color: theme.palette.appText.main,
   },
   registHeader: {
     marginLeft: '14em',
-    color: theme.palette.appText.main
+    color: theme.palette.appText.main,
   },
   omlHeader: {
     marginLeft: '8rem',
-    color: theme.palette.appText.main
+    color: theme.palette.appText.main,
   },
   bladeListHeadersContainer: {
-    marginBottom: '2rem'
+    marginBottom: '2rem',
   },
   bladeContainer: {
     borderBottom: '1px solid lightgray',
@@ -92,64 +91,59 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.appText.main,
     border: `1px solid ${theme.palette.appText.main}`,
     marginLeft: '7rem',
-    width: '7rem'
+    width: '7rem',
   },
   search: {
     marginLeft: '10em',
     marginRight: '2em',
-    
-    
   },
   searchResult: {
-    marginRight: '1rem'
-  }
+    marginRight: '1rem',
+  },
 }));
 const BladeList = ({
   blades,
   header,
+  bladeType,
   createLink,
   editLink1,
   editLink2,
   viewLink,
-  bladtype
+  bladtype,
 }) => {
-  const [backgroundColor, setBackgroundColor] = useState('red');
-  const [searchInput, setSearchInput] = useState('');
-  // const bladeData = JSON.parse(data);
+  // const [searchInput, setSearchInput] = useState('');
+  // // // const bladeData = JSON.parse(data);
   const classes = useStyles();
 
   const bladeList = blades.data.sort((a, b) => a.serial > b.serial);
-
-  const getSearchInput = (e) => {
-    setSearchInput(e.target.value);
-    console.log(searchInput);
-  };
-
-  const filter = bladeList.filter((blade) =>
-    blade.serial.includes(searchInput)
-  );
-  const bladeCount = blades.data.filter((blade) =>
-    blade.type.includes(bladtype)
+  const filterBladeType = bladeList.filter((blade) =>
+    blade.type.includes(bladeType)
   );
 
- 
+  // const getSearchInput = (e) => {
+  //   setSearchInput(e.target.value);
+  //   console.log(searchInput);
+  // };
 
-  
+  // const filter = bladeList.filter((blade) =>
+  //   blade.serial.includes(searchInput)
+  // );
+  // const bladeCount = blades.data.filter((blade) =>
+  //   blade.type.includes(bladtype)
+  // );
 
   return (
     <div className={classes.mainContainer}>
-    
       <Typography className={classes.header} color="primary" variant="h2">
         {header}
       </Typography>
-     
+
       <div className={classes.textTopContiner}>
         <Typography variant="h5">
-          Antall sagblad: {bladeCount.length}
+          Antall sagblad: {filterBladeType.length}
         </Typography>
-         
-       
-        <Link href={createLink}>
+
+        {/* <Link href={createLink}>
           <Button
             color="primary"
             className={classes.leggTilBtn}
@@ -159,61 +153,49 @@ const BladeList = ({
           </Button>
         </Link>
         <TextField inputProps={{ style: { color: 'white', fontSize: '1.5rem'}}}
- color='secondary' className={classes.search} placeholder='Søk' onChange={getSearchInput} />
-    
-      </div>
-      <Grid className={classes.bladeListHeadersContainer} container>
-      <Typography className={classes.serialHeader}>Serial</Typography>
-      <Typography className={classes.registHeader}>Reg. dato</Typography>
-      <Typography className={classes.omlHeader}>Omloddinger</Typography>
-      </Grid>
-      {filter.map((blade) => {
+ color='secondary' className={classes.search} placeholder='Søk' onChange={getSearchInput} /> */}
 
-      
-        return (
-          <>
-          {blade.type === bladtype && (
-            
-            <div key={blade._id}>
-            
-            <div className={classes.bladeContainer}>
-              {blade.performer.length < 2 && (
-                <div className={classes.colorDot1}></div>
-              )}
-              {blade.performer.length === 2 && (
-                <div className={classes.colorDot2}></div>
-              )}
-              {blade.performer.length > 2 && (
-                <div className={classes.colorDot3}></div>
-              )}
-             
-              <Typography className={classes.tableTextSerial}>
-                {blade.serial}
-              </Typography>
-              <Typography className={classes.tableTextDate}>
-                {blade.registDate}
-              </Typography>
-              <Typography>{blade.performer.length}</Typography>
-              <Link href={`${editLink1}/${blade._id}${editLink2}`}>
-                <Button className={classes.btn} variant="outlined">
-                  Rediger
-                </Button>
-              </Link>
-              <Link href={`${viewLink}/${blade._id}`}>
-                <Button
-                  className={classes.btn}
-                  variant="outlined"
-                  color="secondary"
-                >
-                  Vis
-                </Button>
-              </Link>
-            </div>
+
+      </div>
+      {filterBladeType.map((blade) => 
+      <div key={blade._id}>
+         <div className={classes.bladeContainer}>
+            {blade.performer.length < 2 && (
+              <div className={classes.colorDot1}></div>
+            )}
+            {blade.performer.length === 2 && (
+              <div className={classes.colorDot2}></div>
+            )}
+            {blade.performer.length > 2 && (
+              <div className={classes.colorDot3}></div>
+            )}
+
+            <Typography className={classes.tableTextSerial}>
+              {blade.serial}
+            </Typography>
+            <Typography className={classes.tableTextDate}>
+              {blade.registDate}
+            </Typography>
+            <Typography>{blade.performer.length}</Typography>
+            <Link href={`${editLink1}/${blade._id}${editLink2}`}>
+              <Button className={classes.btn} variant="outlined">
+                Rediger
+              </Button>
+            </Link>
+            <Link href={`${viewLink}/${blade._id}`}>
+              <Button
+                className={classes.btn}
+                variant="outlined"
+                color="secondary"
+              >
+                Vis
+              </Button>
+            </Link>
           </div>
-          )}
-          </>
-        );
-      })}
+          </div>
+)}
+
+    
     </div>
   );
 };
