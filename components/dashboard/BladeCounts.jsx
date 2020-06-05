@@ -10,16 +10,41 @@ const useStyles = makeStyles(theme => ({
       marginLeft:'20em',
       background: 'linear-gradient(90deg, rgba(43,138,117,1) 12%, rgba(157,211,222,1) 69%)',
       padding: '1rem',
+     [theme.breakpoints.down('xs')]: {
+        marginLeft: '1em',
+        width: '25em',
+
      
+     },
    },
    bladeListCount: {
       fontWeight: 'bold',
-      color: '#0438fe',
+      color: theme.palette.bladeList.main,
       padding: '1rem',
+      [theme.breakpoints.down('xs')]: {
+        padding: '.8rem 0rem',
+        width: '16rem'
+      
+      },
+   },
+   bladeListCount2: {
+      fontWeight: 'bold',
+      color: theme.palette.bladeList.main,
+      padding: '1rem',
+      [theme.breakpoints.down('xs')]: {
+        padding: '.8rem 0rem',
+        width: '5rem',
+        marginLeft: '3rem'
+      
+      },
    },
    bladeNameContainer: {
       width: '10rem',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      [theme.breakpoints.down('xs')]: {
+         width: '7rem',
+       
+       },
    }
 }))
 const BladeCounts = ({blades}) => {
@@ -101,27 +126,27 @@ return (
          <Typography className={classes.bladeListCount} variant='body1'>VS-66 venstre F: </Typography>
          </Grid>
          <Grid container className={classes.bladeNameContainer}>
-         <Typography className={classes.bladeListCount}>{k2236Count.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{k2236Count.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{k2438Count.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{k2438Count.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{k2640Count.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{k2640Count.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{k2842Count.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{k2842Count.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{k3044Count.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{k3044Count.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{k3246Count.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{k3246Count.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{kNbladCount.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{kNbladCount.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{kvs66hoyreCount.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{kvs66hoyreCount.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{kvs66venstreCount.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{kvs66venstreCount.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{kvs66hoyreFCount.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{kvs66hoyreFCount.length}</Typography>
          <Divider />
-         <Typography className={classes.bladeListCount}>{kvs66venstreFCount.length}</Typography>
+         <Typography className={classes.bladeListCount2}>{kvs66venstreFCount.length}</Typography>
          
          </Grid>
          </Grid>

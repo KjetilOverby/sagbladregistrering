@@ -19,7 +19,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-  const useStyles = makeStyles({
+  const useStyles = makeStyles((theme) => ({
 
     container: {
       background: 'url("https://images.unsplash.com/photo-1536183922588-166604504d5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80")',
@@ -47,7 +47,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     root: {
       maxWidth: 545,
       height: 'auto',
-      paddingBottom: '2rem'
+      paddingBottom: '2rem',
+      [theme.breakpoints.down('xs')]: {
+        minHeight: '100vh',
+        marginBottom: '10em'
+      },
     },
     img: {
       height: 300
@@ -117,7 +121,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
        width: '45em',
        background: 'gray',
        padding: '1rem',
-       borderRadius: '5px'
+       borderRadius: '5px',
+       [theme.breakpoints.down('xs')]: {
+         width: '100vw'
+       },
     },
     commentHeader: {
       color: '#dcdcdc',
@@ -126,7 +133,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     comment: {
       color: '#dcdcdc'
     }
-  })
+  }))
 const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);

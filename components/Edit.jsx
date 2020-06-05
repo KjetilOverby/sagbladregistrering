@@ -26,7 +26,11 @@ import {
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
      background: 'url("https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80")',
-     backgroundSize: 'cover'
+     backgroundSize: 'cover',
+     height: '100vh',
+     [theme.breakpoints.down('xs')]: {
+        background: theme.palette.sidebar.main
+     },
   },
  
   retipInputContainer: {
@@ -60,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.appText.main,
     padding: '2rem',
     borderRadius: '5px',
+    [theme.breakpoints.down('xs')]: {
+      margin: 0,
+      width: '90vw'
+    },
     
   },
   retipText: {
@@ -67,12 +75,19 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.3rem',
     fontWeight: 'bold',
     padding: '1rem',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    [theme.breakpoints.down('xs')]: {
+       fontSize: '1em'
+    },
   },
   retipHeader: {
     color: theme.palette.appText.main,
     marginLeft: '10em',
-    marginTop: '1em'
+    marginTop: '1em',
+    [theme.breakpoints.down('xs')]: {
+      margin:'0 0 2em 0',
+      fontSize: '1.5rem'
+    },
   },
   commentContainer: {
     marginTop: '10em',

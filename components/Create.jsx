@@ -23,7 +23,11 @@ const useStyles = makeStyles((theme) => ({
   mainContainer: {
      background: 'url("https://images.unsplash.com/photo-1440909921208-2fcbb9e42f7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")',
      backgroundSize: 'cover',
-     height: '100vh'
+     height: '100vh',
+     [theme.breakpoints.down('xs')]: {
+        width: '100vw',
+        background: theme.palette.sidebar.main
+     },
      
   },
   root: {
@@ -33,8 +37,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   header: {
-    color: 'white',
+    color: theme.palette.appText.main,
     margin: '1em 0 0 1.5em',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2rem',
+      marginBottom: '2rem'
+    },
   },
   form: {
     display: 'flex',
@@ -47,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '5rem',
     background: theme.palette.appText.main,
     borderRadius: '5px',
+    [theme.breakpoints.down('xs')]: {
+      width: '90vw',
+      margin: '0 1em'
+    },
   },
   btn: {
     margin: '5em',
@@ -57,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
     height: '40em',
     width: '30em',
     display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      margin: 0
+    },
   },
   listItem: {
     marginBottom: '-1em',
@@ -70,8 +85,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold'
   },
   counterText: {
-    color: 'white',
-    margin: '1rem 0 0 5rem'
+    color: theme.palette.appText.main,
+    margin: '1rem 0 0 5rem',
+    [theme.breakpoints.down('xs')]: {
+     margin: '1em 0 0 1em',
+     fontSize: '1.5rem'
+    },
   }
 }));
 const Create = (props) => {
@@ -100,7 +119,7 @@ const Create = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBlade();
+    //createBlade();
     setSerialList([...serialList, serial]);
   };
 
@@ -202,7 +221,7 @@ const Create = (props) => {
           />
           <TextField
             variant="outlined"
-            label="RegistDate"
+            label="Registreringsdato"
             onChange={handleChange}
             name="registDate"
           />
