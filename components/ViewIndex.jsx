@@ -22,8 +22,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   const useStyles = makeStyles({
 
     container: {
-      margin: '5em',
-       justifyContent: 'space-around'
+      background: 'url("https://images.unsplash.com/photo-1536183922588-166604504d5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80")',
+     
+       justifyContent: 'space-around',
+       backgroundSize: 'cover',
+       height: '100vh'
     },
     kanefusa: {
       fontStyle: 'italic'

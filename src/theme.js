@@ -14,7 +14,7 @@ const theme = createMuiTheme({
       main: red.A400,
     },
     background: {
-      default: '#023232',
+      default: '#082a47',
     },
     appColor1: {
       main: '#008b8b'
@@ -23,7 +23,13 @@ const theme = createMuiTheme({
        main: '#58c7ad'
     },
     sidebar: {
-      main: '#023232'
+      main: '#082a47'
+    },
+    bladeList:{
+      main: '#082a47'
+    },
+    bladeListHover: {
+      main: '#0c3152'
     }
   },
   sidebarWidth: {

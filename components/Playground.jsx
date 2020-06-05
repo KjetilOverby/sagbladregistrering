@@ -9,9 +9,7 @@ const Playground = () => {
 const classes = useStyles()
 const [textInput, setTextInput] = useState('')
 const [finalText, setFinalText] = useState(['we', 'wer'])
-useEffect(() => {
-    console.log(textInput);
-})
+
 const inputHandler = (e) => {
    setTextInput(e.target.value);
    

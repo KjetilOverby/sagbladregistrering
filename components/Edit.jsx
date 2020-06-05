@@ -8,6 +8,7 @@ import {
   makeStyles,
   Container,
   ThemeProvider,
+  Divider,
 } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -23,22 +24,27 @@ import {
 
 
 const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+     background: 'url("https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80")',
+     backgroundSize: 'cover'
+  },
  
   retipInputContainer: {
     marginTop: '3em',
     marginBottom: '5em',
-    color: theme.palette.appText.main,
-    background: 'white',
+    color: theme.palette.bladeList.main,
+    background: theme.palette.appText.main,
     padding: '2rem',
-    borderRadius: '10px'
+    borderRadius: '10px',
+    
   },
   retipInput: {
     margin: '1rem 0'
     
   },
   btn: {
-    border: `1px solid ${theme.palette.appText.main}`,
-    color: theme.palette.appText.main,
+    border: `1px solid ${theme.palette.bladeList.main}`,
+    color: theme.palette.bladeList.main,
     marginTop: '2rem'
   },
   serialHeader: {
@@ -49,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   retipTextContainer: {
     color: theme.palette.primary,
     minHeight: '20em',
-    marginTop: '4em',
+    marginTop: '3em',
     marginLeft: '15em',
     background: theme.palette.appText.main,
     padding: '2rem',
@@ -58,16 +64,27 @@ const useStyles = makeStyles((theme) => ({
   },
   retipText: {
     marginRight: '3em',
-    fontSize: '1.5rem'
+    fontSize: '1.3rem',
+    fontWeight: 'bold',
+    padding: '1rem',
+    fontStyle: 'italic'
   },
   retipHeader: {
     color: theme.palette.appText.main,
     marginLeft: '10em',
-    marginTop: '3.5em'
+    marginTop: '1em'
   },
   commentContainer: {
     marginTop: '10em',
    
+  },
+  newPerformer: {
+    marginRight: '3em',
+    fontSize: '1.3rem',
+    fontWeight: 'bold',
+    padding: '1rem',
+    fontStyle: 'italic',
+    color: '#176736'
   }
 }));
 
@@ -75,6 +92,9 @@ const Edit = ({ blade, header, back, updateUrl }) => {
   const classes = useStyles();
   const [form, setForm] = useState({ performer: 'Stridsbergs' });
   const [comment, setComment] = useState('');
+
+  const [toShowList, setToShowList] = useState()
+  const [showList, setShowList] = useState([])
   const router = useRouter();
 
   // const [selectedDate, setSelectedDate] = React.useState(
@@ -88,11 +108,13 @@ const Edit = ({ blade, header, back, updateUrl }) => {
     e.preventDefault();
 
     updateBlade();
+    setShowList([...showList, form])
   };
 
   const handleChange = (e) => {
     
     setForm({ ...form, [e.target.name]: e.target.value });
+    setToShowList(e.target.value)
   };
   const handleComment = (e) => {
     setComment({ ...comment, ['comment']: e.target.value });
@@ -143,6 +165,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
   };
 
   return (
+    <div className={classes.mainContainer}>
     <Container>
       <Grid direction="column" container>
       <Grid  container>
@@ -220,20 +243,47 @@ const Edit = ({ blade, header, back, updateUrl }) => {
         <Grid className={classes.retipTextContainer} container>
           
            <Grid item>
+
+      
           <Typography className={classes.retipText}>{blade.performer[0]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.performer[1]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.performer[2]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.performer[3]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.performer[4]}</Typography>
-         
+          {  showList.map((list) => {
+             return (
+               <div>
+                 <Typography className={classes.newPerformer} variant='h5'>{list.performer}</Typography>
+                 <Divider />
+               </div>
+             )
+           })
+           }
          
           </Grid>
           <Grid item>
+
+         
           <Typography className={classes.retipText}>{blade.date[0]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.date[1]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.date[2]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.date[3]}</Typography>
+          <Divider />
           <Typography className={classes.retipText}>{blade.date[4]}</Typography>
+          {showList.map((list) => {
+            return (
+              <div>
+                <Typography className={classes.newPerformer} variant='h5'>{list.date}</Typography>
+              </div>
+            )
+          })}
           </Grid>
         </Grid>
         </Grid>
@@ -267,6 +317,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
    
       </Grid>
     </Container>
+    </div>
   );
 };
 

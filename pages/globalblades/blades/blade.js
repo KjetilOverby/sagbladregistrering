@@ -3,9 +3,16 @@ import baseUrl from '../../../utils/baseUrl'
 import GlobalBladeList from '../../../components/GlobalBladeList';
 import { useState } from 'react';
 
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import BladeCounts from '../../../components/dashboard/BladeCounts';
+
 
 const blade = ({ blades }) => {
-  const [allBlades, setAllBlades] = useState(false)
+
+ 
+  
+  
+  const [allBlades, setAllBlades] = useState(true)
   const [k2236, setk2236] = useState(false)
   const [k2438, setk2438] = useState(false)
   const [k2640, setk2640] = useState(false)
@@ -64,6 +71,12 @@ const blade = ({ blades }) => {
       viewLink='/blades_id'
      
       />
+
+
+  
+      
+    
+
     </div>
   );
 };

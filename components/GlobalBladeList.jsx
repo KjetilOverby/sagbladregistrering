@@ -23,6 +23,9 @@ import Kvs66venstreF from './Kanefusa/Kvs66venstreF';
 import Nvs66hoyre from './Nessjø/Nvs66hoyre';
 import Nvs66venstre from './Nessjø/Nvs66venstre';
 const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+  
+  },
   header: {
     margin: '.6em 5em',
     
@@ -52,11 +55,11 @@ const useStyles = makeStyles((theme) => ({
     padding: '1.5rem 20em',
     display: 'flex',
     justifyContent: 'flex-start',
-    background: '#023232',
+    background: theme.palette.bladeList.main,
     color: 'white',
     transition: '0.4s',
     '&:hover': {
-      background: '#022828',
+      background: theme.palette.bladeListHover.main,
     },
     [theme.breakpoints.down('md')]: {
       padding: '1.5rem 40em',

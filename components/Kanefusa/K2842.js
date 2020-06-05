@@ -7,7 +7,7 @@ const K2842 = ({blades}) => {
     <div>
       <BladeList
        blades={blades}
-       header='Kanefudsa 2.8 - 4.2'
+       header='Kanefusa 2.8 - 4.2'
        bladeType='Kanefusa 2.8-4.2'
        viewLink='/blades_id'
        editLink1='/blades_id'

@@ -322,7 +322,7 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <Link href="/home">
+        <Link href="/dashboard">
           <ListItem button>
             <ListItemIcon>
               {<DashboardIcon className={classes.icon} />}

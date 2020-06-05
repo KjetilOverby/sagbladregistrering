@@ -1,12 +1,31 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { makeStyles, Typography, TextField, Button, Grid, MenuItem } from '@material-ui/core';
+import {
+  makeStyles,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  MenuItem,
+} from '@material-ui/core';
 import Link from 'next/link';
 import { yellow } from '@material-ui/core/colors';
 import { array } from 'prop-types';
 import { get } from 'mongoose';
+import TripOriginIcon from '@material-ui/icons/TripOrigin';
+import StarsIcon from '@material-ui/icons/Stars';
+
+// https://images.unsplash.com/photo-1470165473874-023613603389?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80
+// https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80
+// https://images.unsplash.com/photo-1517476072926-bce26e54610f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80
 
 const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+     background: 'url("https://images.unsplash.com/photo-1440909921208-2fcbb9e42f7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")',
+     backgroundSize: 'cover',
+     height: '100vh'
+     
+  },
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
@@ -26,19 +45,33 @@ const useStyles = makeStyles((theme) => ({
     height: '30em',
     marginLeft: '5rem',
     marginTop: '5rem',
-    background: '#dcdcdc',
+    background: theme.palette.appText.main,
     borderRadius: '5px',
   },
   btn: {
     margin: '5em',
   },
   listContainer: {
-    margin: '10rem',
-    color: theme.palette.appText.main
+    margin: '10rem 10rem',
+    color: theme.palette.appText.main,
+    height: '40em',
+    width: '30em',
+    display: 'flex',
   },
   listItem: {
     marginBottom: '-1em',
-    fontSize: '1rem'
+    fontSize: '1rem',
+    width: '7em',
+    listStyle: 'none',
+    display: 'inline-flex',
+    verticalAlign: 'middle',
+    justifyContent: 'space-around',
+    fontSize: '1.2rem',
+    fontWeight: 'bold'
+  },
+  counterText: {
+    color: 'white',
+    margin: '1rem 0 0 5rem'
   }
 }));
 const Create = (props) => {
@@ -46,9 +79,7 @@ const Create = (props) => {
   const [currency, setCurrency] = useState();
   const [form, setForm] = useState({ serial: '', registDate: '' });
   const serial = form.serial;
-  const [serialList, setSerialList] = useState([])
-
-
+  const [serialList, setSerialList] = useState([]);
 
   const createBlade = async () => {
     try {
@@ -69,11 +100,9 @@ const Create = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     createBlade();
-     setSerialList([...serialList, serial])
-    
+    createBlade();
+    setSerialList([...serialList, serial]);
   };
-  
 
   const handleChange2 = (event) => {
     setCurrency(event.target.value);
@@ -139,71 +168,70 @@ const Create = (props) => {
     {
       value: 'Nessjø VS-66 høyre',
       label: 'Nessjø VS-66 høyre',
-    }
+    },
   ];
 
   return (
-    <Grid container>
-    <Grid item>
-      <Typography className={classes.header} variant="h2">
-        Legg til {props.header} blader
-      </Typography>
-      <form className={classes.form}>
-      <TextField
-          id="standard-select-currency"
-          select
-          label="Select"
-          value={currency}
-          onChange={handleChange}
-          helperText="Velg bladtype"
-          name='type'
-        >
-          {sawBlades.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+    <Grid className={classes.mainContainer} container>
+      <Grid item>
+        <Typography className={classes.header} variant="h3">
+          Legg til nye blad
+        </Typography>
+        <form className={classes.form}>
+          <TextField
+            id="standard-select-currency"
+            select
+            label="Select"
+            value={currency}
+            onChange={handleChange}
+            helperText="Velg bladtype"
+            name="type"
+          >
+            {sawBlades.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
 
-
-       
-        <TextField
-          name="serial"
-          variant="outlined"
-          label="Serial"
-          onChange={handleChange}
-        />
-        <TextField
-          variant="outlined"
-          label="RegistDate"
-          onChange={handleChange}
-          name="registDate"
-        />
-        <Button onClick={handleSubmit} variant="outlined">
-          Submit
-        </Button>
-      </form>
-
-      <Link href={props.back}>
-        <Button className={classes.btn} color="secondary" variant="contained">
-          Back
-        </Button>
-      </Link>
+          <TextField
+            name="serial"
+            variant="outlined"
+            label="Serial"
+            onChange={handleChange}
+          />
+          <TextField
+            variant="outlined"
+            label="RegistDate"
+            onChange={handleChange}
+            name="registDate"
+          />
+          <Button onClick={handleSubmit} variant="outlined">
+            Submit
+          </Button>
+        </form>
+         <Typography className={classes.counterText} variant='h4'>Du har lagt til {serialList.length} blad</Typography>
+        <Link href={props.back}>
+          <Button className={classes.btn} color="secondary" variant="contained">
+            Back
+          </Button>
+        </Link>
+        
       </Grid>
+
       <Grid className={classes.listContainer} item>
-      <Grid direction='column' container>
-       <h1>Du har lagt inn {serialList.length} blad</h1>
-      {serialList.map((list) => {
-        return (
-          <div>
-            
-            <ul>
-              <li className={classes.listItem}>{list}</li>
-            </ul>
-          </div>
-        )
-      })}
-      </Grid>
+        <Grid direction="column" container>
+          {serialList.map((list) => {
+            return (
+              <div>
+                <ul>
+                
+                  <li className={classes.listItem}><StarsIcon />{list}</li>
+                </ul>
+              </div>
+            );
+          })}
+        </Grid>
       </Grid>
     </Grid>
   );
