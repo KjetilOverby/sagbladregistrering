@@ -119,6 +119,19 @@ const Edit = ({ blade, header, back, updateUrl }) => {
   //   setSelectedDate(date);
   // };
 
+ 
+
+   const performFilter = blade.performer.filter(function(bladeFilt) {
+     return bladeFilt !== null || undefined
+   })
+  
+   const dateFilter = blade.date.filter(function(dateFilt) {
+     return dateFilt !== null || undefined
+   })
+   
+  
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -260,15 +273,15 @@ const Edit = ({ blade, header, back, updateUrl }) => {
            <Grid item>
 
       
-          <Typography className={classes.retipText}>{blade.performer[0]}</Typography>
+          <Typography className={classes.retipText}>{performFilter[0]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.performer[1]}</Typography>
+          <Typography className={classes.retipText}>{performFilter[1]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.performer[2]}</Typography>
+          <Typography className={classes.retipText}>{performFilter[2]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.performer[3]}</Typography>
+          <Typography className={classes.retipText}>{performFilter[3]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.performer[4]}</Typography>
+          <Typography className={classes.retipText}>{performFilter[4]}</Typography>
           {  showList.map((list) => {
              return (
                <div>
@@ -283,15 +296,15 @@ const Edit = ({ blade, header, back, updateUrl }) => {
           <Grid item>
 
          
-          <Typography className={classes.retipText}>{blade.date[0]}</Typography>
+          <Typography className={classes.retipText}>{dateFilter[0]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.date[1]}</Typography>
+          <Typography className={classes.retipText}>{dateFilter[1]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.date[2]}</Typography>
+          <Typography className={classes.retipText}>{dateFilter[2]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.date[3]}</Typography>
+          <Typography className={classes.retipText}>{dateFilter[3]}</Typography>
           <Divider />
-          <Typography className={classes.retipText}>{blade.date[4]}</Typography>
+          <Typography className={classes.retipText}>{dateFilter[4]}</Typography>
           {showList.map((list) => {
             return (
               <div>
@@ -324,7 +337,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
         </form>
         </Grid>
 
-        <Link href={back}>
+        <Link href='/globalblades/blades/blade'>
           <Button className={classes.btn} variant="outlined">Back</Button>
         </Link>
 

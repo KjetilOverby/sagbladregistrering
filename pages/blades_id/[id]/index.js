@@ -5,6 +5,7 @@ import View from '../../../components/View';
 import baseUrl from '../../../utils/baseUrl';
 
 const blades_id = ({ blade }) => {
+ 
   return (
     <div>
       {/*    <ViewIndex

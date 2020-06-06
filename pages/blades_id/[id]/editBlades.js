@@ -11,7 +11,7 @@ const editBlade = ({ blade }) => {
       <Edit
       
        blade={blade} 
-       back='/globalblades/blades/blade'
+       
        updateUrl='bladesApi'
        />
     </div>

@@ -24,8 +24,9 @@ import Kvs66hoyreF from './Kanefusa/KvshoyreF';
 import Kvs66venstreF from './Kanefusa/Kvs66venstreF';
 import Nvs66hoyre from './Nessjø/Nvs66hoyre';
 import Nvs66venstre from './Nessjø/Nvs66venstre';
+
+import EventNoteIcon from '@material-ui/icons/EventNote';
 const useStyles = makeStyles((theme) => ({
- 
   header: {
     margin: '.6em 5em',
 
@@ -33,26 +34,22 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '3rem',
       margin: '0em 1em',
       maxWidth: '100vw',
-      
     },
   },
   type: {
     marginRight: '5em',
     width: '10em',
-    
-    
   },
   serialHeader: {
     marginLeft: '18em',
     width: '5em',
     color: theme.palette.appText.main,
-    
   },
   registHeader: {
     marginLeft: '14em',
     color: theme.palette.appText.main,
     [theme.breakpoints.down('xs')]: {
-      margin: 0
+      margin: 0,
     },
   },
   omlHeader: {
@@ -61,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
   },
   bladeListHeadersContainer: {
     marginBottom: '2rem',
-    
   },
   bladeContainer: {
     borderBottom: '1px solid lightgray',
@@ -78,8 +74,6 @@ const useStyles = makeStyles((theme) => ({
       padding: '1em',
       flexDirection: 'column',
       maxWidth: '100vw',
-      
-      
     },
   },
 
@@ -90,15 +84,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       margin: 0,
       flexDirection: 'column',
-      
-      
     },
   },
   antallText: {
     width: '20em',
     [theme.breakpoints.down('xs')]: {
       margin: '0 3rem',
-      width: '70vw'
+      width: '70vw',
     },
   },
   leggTilBtn: {
@@ -114,6 +106,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color: theme.palette.appColor1.main,
     width: '15em',
+    [theme.breakpoints.down('lg')]: {
+      width: '4.6em',
+    },
     [theme.breakpoints.down('xs')]: {
       marginLeft: '1em',
       fontSize: '2rem',
@@ -123,11 +118,19 @@ const useStyles = makeStyles((theme) => ({
   tableTextDate: {
     width: '10em',
     marginRight: '3rem',
+    [theme.breakpoints.down('lg')]: {
+      width: '7em',
+      marginRight: 0,
+    },
     [theme.breakpoints.down('xs')]: {
       marginLeft: '2em',
     },
   },
   tableTextNumberPerform: {
+    [theme.breakpoints.down('lg')]: {
+      marginLeft: 0,
+    },
+
     [theme.breakpoints.down('xs')]: {
       fontSize: '1rem',
       marginLeft: '2em',
@@ -138,18 +141,23 @@ const useStyles = makeStyles((theme) => ({
   },
   dotAndTypeContainer: {
     width: '55em',
+    [theme.breakpoints.down('xl')]: {
+      width: '45vw',
+    },
     [theme.breakpoints.down('xs')]: {
       marginBottom: '1rem',
       width: '90vw',
-      
     },
   },
   serialDateContainer: {
-     flexDirection: 'row',
-     [theme.breakpoints.down('xs')]: {
-        flexDirection: 'column',
-        
-     },
+    flexDirection: 'row',
+    [theme.breakpoints.down('lg')]: {
+      width: '35em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
+      width: '15em',
+    },
   },
   colorDot1: {
     height: '1.3rem',
@@ -180,16 +188,18 @@ const useStyles = makeStyles((theme) => ({
     border: `1px solid ${theme.palette.appText.main}`,
     marginLeft: '7rem',
     width: '7rem',
+    [theme.breakpoints.down('lg')]: {
+      margin: '0 3em',
+    },
     [theme.breakpoints.down('xs')]: {
       margin: '1em 0 .2em 1em',
     },
   },
   searchContainer: {
-  
     [theme.breakpoints.down('xs')]: {
       background: '#02213c',
       paddingTop: '2em',
-      width: '100vw'
+      width: '100vw',
     },
   },
   search: {
@@ -198,7 +208,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       margin: '1em 0 2em 3em',
       width: '70vw',
-      
     },
   },
   searchResult: {
@@ -206,6 +215,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       margin: '0 1rem 4em 2em',
     },
+  },
+  noteIconContainer: {
+    marginLeft: '2rem',
+    display: 'flex',
+    alignItems: 'center',
   },
 }));
 const BladeList = ({
@@ -258,47 +272,43 @@ const BladeList = ({
             </Typography>
           </Grid>
           <div className={classes.searchContainer}>
-          <Grid item className={classes.textTopContiner}>
-            <Typography className={classes.antallText} variant="h5">
-              Antall sagblad: {blades.data.length}
-            </Typography>
+            <Grid item className={classes.textTopContiner}>
+              <Typography className={classes.antallText} variant="h5">
+                Antall sagblad: {blades.data.length}
+              </Typography>
 
-            <Link href={createLink}>
-              <Button
-                color="primary"
-                className={classes.leggTilBtn}
-                variant="contained"
-              >
-                Legg til sagblad
-              </Button>
-            </Link>
-           
-            <TextField
-              inputProps={{ style: { color: 'white', fontSize: '1.5rem' } }}
-              color="secondary"
-              className={classes.search}
-              placeholder="Søk"
-              onChange={getSearchInput}
-            />
-            <Grid container>
-              <Grid item>
-                <Typography className={classes.searchResult} variant="h5">
-                  Søkeresultat:{' '}
-                </Typography>
+              <Link href={createLink}>
+                <Button
+                  color="primary"
+                  className={classes.leggTilBtn}
+                  variant="contained"
+                >
+                  Legg til sagblad
+                </Button>
+              </Link>
+
+              <TextField
+                inputProps={{ style: { color: 'white', fontSize: '1.5rem' } }}
+                color="secondary"
+                className={classes.search}
+                placeholder="Søk"
+                onChange={getSearchInput}
+              />
+              <Grid container>
+                <Grid item>
+                  <Typography className={classes.searchResult} variant="h5">
+                    Søkeresultat:{' '}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h5">
+                    {searchInput === '' ? 'Ingen søk' : filter.length}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Typography variant="h5">
-                  {searchInput === '' ? 'Ingen søk' : filter.length}
-                </Typography>
-              </Grid>
-              
-             
             </Grid>
-           
-            
-          </Grid>
           </div>
-          
+
           {/* <Grid className={classes.bladeListHeadersContainer} container>
       <Typography className={classes.serialHeader}>Serial</Typography>
       <Typography className={classes.registHeader}>Reg. dato</Typography>
@@ -306,17 +316,21 @@ const BladeList = ({
       </Grid>  */}
 
           {filter.map((blade) => {
+            const performFilter = blade.performer.filter(function (bladeFilt) {
+              return bladeFilt !== null || undefined;
+            });
+
             return (
               <Grid container key={blade._id}>
                 <Grid className={classes.bladeContainer}>
                   <Grid className={classes.dotAndTypeContainer} container>
-                    {blade.performer.length < 2 && (
+                    {performFilter.length < 2 && (
                       <div className={classes.colorDot1}></div>
                     )}
-                    {blade.performer.length === 2 && (
+                    {performFilter.length === 2 && (
                       <div className={classes.colorDot2}></div>
                     )}
-                    {blade.performer.length > 2 && (
+                    {performFilter.length > 2 && (
                       <div className={classes.colorDot3}></div>
                     )}
                     <Typography className={classes.type}>
@@ -337,17 +351,21 @@ const BladeList = ({
                     </Grid>
                   </Grid>
                   <Grid item>
-                    <Grid direction='row' container>
-                    <Grid item>
-                    <Hidden mdUp>
-                     <Typography className={classes.tableTextNumberPerform}>Antall omloddinger: </Typography> 
-                     </Hidden>
-                     </Grid>
-                     <Grid item>
-                     <Typography className={classes.tableTextNumberPerform}>
-                     {blade.performer.length}
-                    </Typography>
-                    </Grid>
+                    <Grid direction="row" container>
+                      <Grid item>
+                        <Hidden mdUp>
+                          <Typography
+                            className={classes.tableTextNumberPerform}
+                          >
+                            Antall omloddinger:{' '}
+                          </Typography>
+                        </Hidden>
+                      </Grid>
+                      <Grid item>
+                        <Typography className={classes.tableTextNumberPerform}>
+                          {performFilter.length}
+                        </Typography>
+                      </Grid>
                     </Grid>
                   </Grid>
                   <Grid className={classes.buttonContainer} container>
@@ -368,6 +386,9 @@ const BladeList = ({
                           Vis
                         </Button>
                       </Link>
+                    </Grid>
+                    <Grid className={classes.noteIconContainer} item>
+                      {blade.comment.length > 0 && <EventNoteIcon />}
                     </Grid>
                   </Grid>
                 </Grid>

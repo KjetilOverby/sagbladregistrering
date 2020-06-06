@@ -359,7 +359,7 @@ function ResponsiveDrawer(props) {
           </div>
         </div>
       </Link>
-
+      <Hidden mdDown>
       <ListItem button onClick={handleOpenSettings}>
         <ListItemIcon>
           <FormatListNumberedIcon className={classes.icon} />
@@ -480,6 +480,7 @@ function ResponsiveDrawer(props) {
           </Link>
         </List>
       </Collapse>
+      </Hidden>
     </div>
   );
 

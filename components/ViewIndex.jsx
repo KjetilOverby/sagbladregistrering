@@ -90,7 +90,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
       width: '45%',
     },
     cardButtons: {
-     paddingLeft: '1rem'
+     paddingLeft: '1rem',
+     [theme.breakpoints.down('xs')]: {
+    
+     },
     },
 
     deleteBtn: {
@@ -239,11 +242,11 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
       
       <Grid item className={classes.cardButtons}>
       <Link href={back}>
-        <Button className={classes.backBtn} variant='contained' size="small" color="primary">
+        <Button className={classes.backBtn} variant='contained'  color="primary">
           Tilbake
         </Button>
         </Link>
-        <Button onClick={handleClickOpen} variant='contained' className={classes.deleteBtn} size="small">
+        <Button onClick={handleClickOpen} variant='contained' className={classes.deleteBtn} >
           <DeleteIcon /> Slett dette bladet
         </Button>
       </Grid>
