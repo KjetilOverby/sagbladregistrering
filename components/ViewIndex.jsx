@@ -26,7 +26,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
      
        justifyContent: 'space-around',
        backgroundSize: 'cover',
-       height: '100vh'
+       height: '100vh',
+       [theme.breakpoints.down('xs')]: {
+         background: theme.palette.sidebar.main
+       },
+    },
+    cardContent: {
+       flexDirection: 'column',
+       padding: '1rem'
     },
     kanefusa: {
       fontStyle: 'italic'
@@ -48,9 +55,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
       maxWidth: 545,
       height: 'auto',
       paddingBottom: '2rem',
+      background: 'white',
       [theme.breakpoints.down('xs')]: {
-        minHeight: '100vh',
-        marginBottom: '10em'
+        heigth: '100vh',
+        marginBottom: '10em',
+        background: 'white',
       },
     },
     img: {
@@ -72,16 +81,24 @@ const Transition = React.forwardRef(function Transition(props, ref) {
       boxShadow: '2px 2px 5px gray'
     },
     company: {
-      width: '55%'
+      width: '55%',
+      [theme.breakpoints.down('xs')]: {
+        width: '50%'
+      },
     },
     date: {
       width: '45%',
     },
+    cardButtons: {
+     paddingLeft: '1rem'
+    },
+
     deleteBtn: {
       color: 'white',
       fontWeight: 'bold',
       background: 'red',
       minHeight: '3rem',
+      marginLeft: '.5rem',
       
       "&:hover" : {
         background: '#d80f0f'
@@ -167,8 +184,8 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
     <Grid container direction='row' className={classes.container}>
     <Grid item>
 
-<Card className={classes.root}>
-      <CardActionArea>
+<Grid className={classes.root}>
+     
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
@@ -177,7 +194,7 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
           title="SawBlade"
           className={classes.img}
         />
-        <CardContent>
+        <Grid container className={classes.cardContent}>
           <Typography className={classes.kanefusa} gutterBottom variant="h5" component="h2">
             {blade.type}
           </Typography>
@@ -218,9 +235,9 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
               )}
           <Typography>Bladet er omloddet {blade.performer.length} {blade.performer.length === 1 ? 'gang' : 'ganger'}.</Typography>
        </div>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
+        </Grid>
+      
+      <Grid item className={classes.cardButtons}>
       <Link href={back}>
         <Button className={classes.backBtn} variant='contained' size="small" color="primary">
           Tilbake
@@ -229,8 +246,8 @@ const ViewIndex = ({ blade, deleteUrl, pushUrl, header, back }) => {
         <Button onClick={handleClickOpen} variant='contained' className={classes.deleteBtn} size="small">
           <DeleteIcon /> Slett dette bladet
         </Button>
-      </CardActions>
-    </Card>
+      </Grid>
+    </Grid>
     </Grid>
     <Grid item>
     <Typography className={classes.commentHeader} variant='h4'>Anmerkninger</Typography>

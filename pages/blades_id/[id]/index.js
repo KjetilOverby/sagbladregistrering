@@ -1,19 +1,26 @@
 import fetch from 'isomorphic-fetch';
 
 import ViewIndex from '../../../components/ViewIndex';
+import View from '../../../components/View';
 import baseUrl from '../../../utils/baseUrl';
 
 const blades_id = ({ blade }) => {
- 
   return (
     <div>
-      <ViewIndex
+      {/*    <ViewIndex
        blade={blade}
        deleteUrl={`${baseUrl}/api/bladesApi`}
        pushUrl='/globalblades/blades/blade'
        header='No header yet'
        back='/globalblades/blades/blade'
-        />
+        /> */}
+      <View
+        blade={blade}
+        deleteUrl={`${baseUrl}/api/bladesApi`}
+        pushUrl="/globalblades/blades/blade"
+        header="No header yet"
+        back="/globalblades/blades/blade"
+      />
     </div>
   );
 };
@@ -24,5 +31,4 @@ blades_id.getInitialProps = async ({ query: { id } }) => {
   return { blade: data };
 };
 
-export default blades_id
-
+export default blades_id;

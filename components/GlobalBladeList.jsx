@@ -7,6 +7,8 @@ import {
   Button,
   TextField,
   Grid,
+  Hidden,
+  Divider,
 } from '@material-ui/core';
 import Link from 'next/link';
 import K2236 from './Kanefusa/K2236';
@@ -23,26 +25,35 @@ import Kvs66venstreF from './Kanefusa/Kvs66venstreF';
 import Nvs66hoyre from './Nessjø/Nvs66hoyre';
 import Nvs66venstre from './Nessjø/Nvs66venstre';
 const useStyles = makeStyles((theme) => ({
-  mainContainer: {},
+ 
   header: {
     margin: '.6em 5em',
+
     [theme.breakpoints.down('xs')]: {
-      fontSize: '2rem',
-      margin: '1em 1em',
+      fontSize: '3rem',
+      margin: '0em 1em',
+      maxWidth: '100vw',
+      
     },
   },
   type: {
     marginRight: '5em',
     width: '10em',
+    
+    
   },
   serialHeader: {
     marginLeft: '18em',
     width: '5em',
     color: theme.palette.appText.main,
+    
   },
   registHeader: {
     marginLeft: '14em',
     color: theme.palette.appText.main,
+    [theme.breakpoints.down('xs')]: {
+      margin: 0
+    },
   },
   omlHeader: {
     marginLeft: '8rem',
@@ -50,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bladeListHeadersContainer: {
     marginBottom: '2rem',
+    
   },
   bladeContainer: {
     borderBottom: '1px solid lightgray',
@@ -65,8 +77,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       padding: '1em',
       flexDirection: 'column',
-      width: '100vw'
-
+      maxWidth: '100vw',
+      
+      
     },
   },
 
@@ -77,17 +90,22 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       margin: 0,
       flexDirection: 'column',
+      
+      
     },
   },
   antallText: {
+    width: '20em',
     [theme.breakpoints.down('xs')]: {
-      margin: '0 auto',
+      margin: '0 3rem',
+      width: '70vw'
     },
   },
   leggTilBtn: {
     marginLeft: '3rem',
+    width: '28em',
     [theme.breakpoints.down('xs')]: {
-      margin: '2em auto',
+      margin: '2em 3rem',
       width: '15em',
     },
   },
@@ -97,27 +115,41 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.appColor1.main,
     width: '15em',
     [theme.breakpoints.down('xs')]: {
-       marginLeft: '1em'
+      marginLeft: '1em',
+      fontSize: '2rem',
+      width: '80vw',
     },
   },
   tableTextDate: {
     width: '10em',
     marginRight: '3rem',
     [theme.breakpoints.down('xs')]: {
-       marginLeft: '1em'
+      marginLeft: '2em',
     },
   },
   tableTextNumberPerform: {
-     [theme.breakpoints.down('xs')]: {
-        fontSize: '1.5rem',
-        marginLeft: '.6em'
-     },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem',
+      marginLeft: '2em',
+    },
+  },
+  buttonContainer: {
+    flexDirection: 'row',
   },
   dotAndTypeContainer: {
-    width: '25em',
+    width: '55em',
     [theme.breakpoints.down('xs')]: {
-       marginBottom: '1rem'
+      marginBottom: '1rem',
+      width: '90vw',
+      
     },
+  },
+  serialDateContainer: {
+     flexDirection: 'row',
+     [theme.breakpoints.down('xs')]: {
+        flexDirection: 'column',
+        
+     },
   },
   colorDot1: {
     height: '1.3rem',
@@ -149,21 +181,30 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '7rem',
     width: '7rem',
     [theme.breakpoints.down('xs')]: {
-       margin: '1em 0 .2em 1em'
+      margin: '1em 0 .2em 1em',
+    },
+  },
+  searchContainer: {
+  
+    [theme.breakpoints.down('xs')]: {
+      background: '#02213c',
+      paddingTop: '2em',
+      width: '100vw'
     },
   },
   search: {
     marginLeft: '10em',
     marginRight: '2em',
     [theme.breakpoints.down('xs')]: {
-      margin: '1em 0 2em 3em'
+      margin: '1em 0 2em 3em',
+      width: '70vw',
+      
     },
   },
   searchResult: {
     marginRight: '1rem',
     [theme.breakpoints.down('xs')]: {
       margin: '0 1rem 4em 2em',
-
     },
   },
 }));
@@ -216,7 +257,7 @@ const BladeList = ({
               {header}
             </Typography>
           </Grid>
-
+          <div className={classes.searchContainer}>
           <Grid item className={classes.textTopContiner}>
             <Typography className={classes.antallText} variant="h5">
               Antall sagblad: {blades.data.length}
@@ -231,6 +272,7 @@ const BladeList = ({
                 Legg til sagblad
               </Button>
             </Link>
+           
             <TextField
               inputProps={{ style: { color: 'white', fontSize: '1.5rem' } }}
               color="secondary"
@@ -239,18 +281,24 @@ const BladeList = ({
               onChange={getSearchInput}
             />
             <Grid container>
-            <Grid item>
-            <Typography className={classes.searchResult} variant="h5">
-              Søkeresultat:{' '}
-            </Typography>
+              <Grid item>
+                <Typography className={classes.searchResult} variant="h5">
+                  Søkeresultat:{' '}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">
+                  {searchInput === '' ? 'Ingen søk' : filter.length}
+                </Typography>
+              </Grid>
+              
+             
             </Grid>
-            <Grid item>
-            <Typography variant="h5">
-              {searchInput === '' ? 'Ingen søk' : filter.length}
-            </Typography>
-            </Grid>
-            </Grid>
+           
+            
           </Grid>
+          </div>
+          
           {/* <Grid className={classes.bladeListHeadersContainer} container>
       <Typography className={classes.serialHeader}>Serial</Typography>
       <Typography className={classes.registHeader}>Reg. dato</Typography>
@@ -275,39 +323,52 @@ const BladeList = ({
                       {blade.type}
                     </Typography>
                   </Grid>
-                 
-                  <Grid item>
-                    <Typography className={classes.tableTextSerial}>
-                      {blade.serial}
-                    </Typography>
-                  </Grid>
+                  <Grid className={classes.serialDateContainer} container>
+                    <Grid item>
+                      <Typography className={classes.tableTextSerial}>
+                        {blade.serial}
+                      </Typography>
+                    </Grid>
 
+                    <Grid item>
+                      <Typography className={classes.tableTextDate}>
+                        {blade.registDate}
+                      </Typography>
+                    </Grid>
+                  </Grid>
                   <Grid item>
-                    <Typography className={classes.tableTextDate}>
-                      {blade.registDate}
+                    <Grid direction='row' container>
+                    <Grid item>
+                    <Hidden mdUp>
+                     <Typography className={classes.tableTextNumberPerform}>Antall omloddinger: </Typography> 
+                     </Hidden>
+                     </Grid>
+                     <Grid item>
+                     <Typography className={classes.tableTextNumberPerform}>
+                     {blade.performer.length}
                     </Typography>
+                    </Grid>
+                    </Grid>
                   </Grid>
-
-                  <Grid item>
-                    <Typography className={classes.tableTextNumberPerform}>{blade.performer.length}</Typography>
-                  </Grid>
-                  <Grid item>
-                    <Link href={`${editLink1}/${blade._id}${editLink2}`}>
-                      <Button className={classes.btn} variant="outlined">
-                        Rediger
-                      </Button>
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link href={`${viewLink}/${blade._id}`}>
-                      <Button
-                        className={classes.btn}
-                        variant="outlined"
-                        color="secondary"
-                      >
-                        Vis
-                      </Button>
-                    </Link>
+                  <Grid className={classes.buttonContainer} container>
+                    <Grid item>
+                      <Link href={`${editLink1}/${blade._id}${editLink2}`}>
+                        <Button className={classes.btn} variant="outlined">
+                          Rediger
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item>
+                      <Link href={`${viewLink}/${blade._id}`}>
+                        <Button
+                          className={classes.btn}
+                          variant="outlined"
+                          color="secondary"
+                        >
+                          Vis
+                        </Button>
+                      </Link>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>

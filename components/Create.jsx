@@ -119,7 +119,7 @@ const Create = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //createBlade();
+    createBlade();
     setSerialList([...serialList, serial]);
   };
 
