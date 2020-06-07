@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
 const Create = (props) => {
   const classes = useStyles();
   const [currency, setCurrency] = useState();
-  const [form, setForm] = useState({ serial: '', registDate: '' });
+  const [form, setForm] = useState({ serial: '', registDate: '', type: '' });
   const serial = form.serial;
   const [serialList, setSerialList] = useState([]);
 
@@ -116,20 +116,24 @@ const Create = (props) => {
       console.log('something went wrong' + err);
     }
   };
+ 
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(form.serial === '' || form.registDate === '' || form.type === '') {
+      alert('Du må fylle ut feltene')
+    } else {
     createBlade();
     setSerialList([...serialList, serial]);
+    }
   };
 
-  const handleChange2 = (event) => {
-    setCurrency(event.target.value);
-  };
+  
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setCurrency(e.target.value);
+     
   };
   const sawBlades = [
     {
@@ -189,7 +193,8 @@ const Create = (props) => {
       label: 'Nessjø VS-66 høyre',
     },
   ];
-
+  
+  
   return (
     <Grid className={classes.mainContainer} container>
       <Grid item>
@@ -198,6 +203,8 @@ const Create = (props) => {
         </Typography>
         <form className={classes.form}>
           <TextField
+             
+            required
             id="standard-select-currency"
             select
             label="Select"
@@ -214,12 +221,16 @@ const Create = (props) => {
           </TextField>
 
           <TextField
+            
+            required
             name="serial"
             variant="outlined"
             label="Serial"
             onChange={handleChange}
           />
           <TextField
+         
+            required
             variant="outlined"
             label="Registreringsdato"
             onChange={handleChange}

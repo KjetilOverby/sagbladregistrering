@@ -319,6 +319,9 @@ const BladeList = ({
             const performFilter = blade.performer.filter(function (bladeFilt) {
               return bladeFilt !== null || undefined;
             });
+            const commentFilter = blade.comment.filter(function (commentFilt) {
+              return commentFilt !== null || undefined;
+            });
 
             return (
               <Grid container key={blade._id}>
@@ -388,7 +391,7 @@ const BladeList = ({
                       </Link>
                     </Grid>
                     <Grid className={classes.noteIconContainer} item>
-                      {blade.comment.length > 0 && <EventNoteIcon />}
+                      {commentFilter.length > 0 && <EventNoteIcon />}
                     </Grid>
                   </Grid>
                 </Grid>

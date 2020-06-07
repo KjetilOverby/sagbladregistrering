@@ -25,9 +25,9 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-     background: 'url("https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80")',
+     background: 'linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(65,60,175,1) 100%)',
      backgroundSize: 'cover',
-     height: '100vh',
+     height: 'auto',
      [theme.breakpoints.down('xs')]: {
         background: theme.palette.sidebar.main
      },
@@ -91,6 +91,9 @@ const useStyles = makeStyles((theme) => ({
   },
   commentContainer: {
     marginTop: '10em',
+    background: theme.palette.appText.main,
+    width: '27em',
+    padding: '2rem'
    
   },
   newPerformer: {
@@ -134,9 +137,10 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     updateBlade();
     setShowList([...showList, form])
+    
   };
 
   const handleChange = (e) => {
@@ -328,6 +332,8 @@ const Edit = ({ blade, header, back, updateUrl }) => {
             label="Kommentar"
             onChange={handleComment}
             variant="outlined"
+            rows={5} 
+            multiline
           />
           </Grid>
           <Grid item>
@@ -337,13 +343,20 @@ const Edit = ({ blade, header, back, updateUrl }) => {
         </form>
         </Grid>
 
-        <Link href='/globalblades/blades/blade'>
-          <Button className={classes.btn} variant="outlined">Back</Button>
-        </Link>
+       
 
 
    
       </Grid>
+      <Grid container>
+        {blade.comment[0]}
+        {blade.comment[1]}
+        {blade.comment[2]}
+        {blade.comment[3]}
+      </Grid>
+      <Link href='/globalblades/blades/blade'>
+          <Button className={classes.btn} variant="outlined">Back</Button>
+        </Link>
     </Container>
     </div>
   );
