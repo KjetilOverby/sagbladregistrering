@@ -5,31 +5,31 @@ import { red } from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#19857b',
+      main: '#f9713f',
     },
     secondary: {
-      main: '#008b8b',
+      main: '#00ff7f',
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#082a47',
+      default: '#474747',
     },
     appColor1: {
-      main: '#008b8b'
+      main: '#fa7a4b'
     },
     appText: {
-       main: '#58c7ad'
+       main: '#fa7a4b'
     },
     sidebar: {
-      main: '#082a47'
+      main: 'linear-gradient(0deg, rgba(247,141,86,1) 0%, rgb(228, 89, 40) 100%)'
     },
     bladeList:{
-      main: '#082a47'
+      main: 'radial-gradient(circle, rgba(70,70,70,1) 12%, rgba(112,112,112,1) 69%)'
     },
     bladeListHover: {
-      main: '#0c3152'
+      main: 'radial-gradient(circle, rgba(70,70,70,1) 12%, rgba(112,112,112,1) 69%)'
     }
   },
   sidebarWidth: {

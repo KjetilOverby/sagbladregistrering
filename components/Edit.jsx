@@ -25,9 +25,9 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
+    height: '200em',
      background: 'linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(65,60,175,1) 100%)',
-     backgroundSize: 'cover',
-     height: 'auto',
+     
      [theme.breakpoints.down('xs')]: {
         background: theme.palette.sidebar.main
      },
@@ -49,10 +49,11 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     border: `1px solid ${theme.palette.bladeList.main}`,
     color: theme.palette.bladeList.main,
-    marginTop: '2rem'
+    marginTop: '2rem',
+    width: '15rem'
   },
   serialHeader: {
-    color: '#d74848',
+    color: 'blue',
     fontWeight: 'bold',
     margin: '1em 0'
   },
@@ -322,7 +323,9 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
 </Grid>
 
-  
+<Link href='/globalblades/blades/blade'>
+          <Button className={classes.btn} variant="outlined">Back</Button>
+        </Link>
    <Grid item className={classes.commentContainer}>
 
         <form>
@@ -354,9 +357,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
         {blade.comment[2]}
         {blade.comment[3]}
       </Grid>
-      <Link href='/globalblades/blades/blade'>
-          <Button className={classes.btn} variant="outlined">Back</Button>
-        </Link>
+     
     </Container>
     </div>
   );

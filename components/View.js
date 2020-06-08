@@ -18,11 +18,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    background:
-      'linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1544840281-301d28446178?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")',
-
-    backgroundSize: 'cover',
-    height: '100vh',
+   background:'linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,162,1) 50%, rgba(252,176,69,1) 100%)',
     padding: '2em',
     [theme.breakpoints.down('xs')]: {
       background: theme.palette.sidebar.main,
@@ -30,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   container: {
-    width: '30%',
+    width: '40%',
     background: 'white',
     padding: '1rem',
     borderRadius: '10px',
@@ -43,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   img: {
     height: 'auto',
     width: '100%',
+   
   },
   typeHeader: {
     fontStyle: 'italic',
@@ -79,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
   backBtn: {
     marginRight: '2rem',
+    
     [theme.breakpoints.down('xs')]: {
        height: '3rem'
     },
@@ -89,6 +87,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-flex',
     verticalAlign: 'middle',
     justifyContent: 'space-around',
+    "&:hover": {
+      background: '#9c0a0a'
+   },
     [theme.breakpoints.down('xs')]: {
       height: '3rem'
    },
@@ -258,7 +259,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
             <Grid item>
               <Link href={back}>
                 <Button
-                  color="primary"
+                  color="secondary"
                   className={classes.backBtn}
                   variant="contained"
                 >
@@ -301,7 +302,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleClose} color="secondary">
               Avbryt
             </Button>
             <Button onClick={deleteBlade} className={classes.deleteBtn}>

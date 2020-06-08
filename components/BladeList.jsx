@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '2rem',
   },
   bladeContainer: {
+    width: '100vw',
     borderBottom: '1px solid lightgray',
     padding: '1.5rem 20em',
     display: 'flex',

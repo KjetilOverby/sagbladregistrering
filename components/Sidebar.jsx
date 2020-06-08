@@ -352,7 +352,7 @@ function ResponsiveDrawer(props) {
           <div onClick={allBlades}>
             <ListItem button>
               <ListItemIcon>
-                <LanguageIcon className={classes.icon} /> }
+                <LanguageIcon className={classes.icon} /> 
               </ListItemIcon>
               <ListItemText>Alle blad</ListItemText>
             </ListItem>
