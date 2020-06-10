@@ -10,7 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
-
+var dateFormat = require('dateformat');
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -161,7 +161,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
     }
   };
  
- 
+ const datFormat = dateFormat(blade.updated)
   const performFilter = blade.performer.filter(function (bladeFilt) {
     return bladeFilt !== null || undefined;
   });
@@ -188,7 +188,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
           </Grid>
           <Grid item>
             <Typography className={classes.registDateText}>
-              Dato registrert: {blade.registDate}
+              Dato registrert: {blade.date && blade.registDate} {blade.updated && datFormat}
             </Typography>
           </Grid>
           <Grid item>

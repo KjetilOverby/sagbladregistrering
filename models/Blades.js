@@ -25,6 +25,12 @@ const BladesSchema = new mongoose.Schema({
   },
   commentDate: {
     type: [String]
+  },
+  updated: {
+    type: Date
+  },
+  realRegistDate: {
+    type: Date
   }
 });
 

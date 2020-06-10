@@ -8,7 +8,7 @@ const Nvs66hoyre = ({blades}) => {
       <BladeList
        blades={blades}
        header='Nessjø VS-66 høyre'
-       bladeType='Nessjø VS-66 hoyre'
+       bladeType='Nessjø VS-66 høyre'
        viewLink='/blades_id'
        editLink1='/blades_id'
        editLink2='/editBlades'

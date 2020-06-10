@@ -1,15 +1,28 @@
 import Sidebar from '../../../components/Sidebar';
 import baseUrl from '../../../utils/baseUrl'
 import GlobalBladeList from '../../../components/GlobalBladeList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import BladeCounts from '../../../components/dashboard/BladeCounts';
+var dateFormat = require('dateformat');
 
 
 const blade = ({ blades }) => {
+//   var now = new Date();
+ 
+// // Basic usage
+// dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+// // Saturday, June 9th, 2007, 5:46:21 PM
 
-
+// useEffect(() => {
+//   var now = new Date();
+ 
+// // Basic usage
+// //console.log(dateFormat(now, "dddd, mmmm dS, yyyy, h:MM"));
+// console.log(dateFormat(now));
+// // Saturday, June 9th, 2007, 5:46:21 PM
+// })
   
   
   const [allBlades, setAllBlades] = useState(true)
@@ -26,7 +39,6 @@ const blade = ({ blades }) => {
   const [kvs66venstreF, setkvs66venstreF] = useState(false)
   const [nvs66hoyre, setnvs66hoyre] = useState(false)
   const [nvs66venstre, setnvs66venstre] = useState(false)
-
  
 
   return (

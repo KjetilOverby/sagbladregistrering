@@ -26,7 +26,7 @@ import {
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     height: '200em',
-     background: 'linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(65,60,175,1) 100%)',
+     background: 'linear-gradient(0deg, rgba(86,231,247,1) 0%, rgba(48,61,61,1) 100%)',
      
      [theme.breakpoints.down('xs')]: {
         background: theme.palette.sidebar.main
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '3em',
     marginBottom: '5em',
     color: theme.palette.bladeList.main,
-    background: theme.palette.appText.main,
+    background: theme.palette.editBox.main,
     padding: '2rem',
     borderRadius: '10px',
     
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     width: '15rem'
   },
   serialHeader: {
-    color: 'blue',
+    color: 'white',
     fontWeight: 'bold',
     margin: '1em 0'
   },
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '20em',
     marginTop: '3em',
     marginLeft: '15em',
-    background: theme.palette.appText.main,
+    background: theme.palette.editBox.main,
     padding: '2rem',
     borderRadius: '5px',
     [theme.breakpoints.down('xs')]: {
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   retipHeader: {
-    color: theme.palette.appText.main,
+    color: theme.palette.editBox.main,
     marginLeft: '10em',
     marginTop: '1em',
     [theme.breakpoints.down('xs')]: {
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
   commentContainer: {
     marginTop: '10em',
-    background: theme.palette.appText.main,
+    background: theme.palette.editBox.main,
     width: '27em',
     padding: '2rem'
    
@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     padding: '1rem',
     fontStyle: 'italic',
-    color: '#176736'
+    color: theme.palette.appText.main
   }
 }));
 

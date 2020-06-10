@@ -22,6 +22,9 @@ const theme = createMuiTheme({
     appText: {
        main: '#fa7a4b'
     },
+    editBox: {
+       main: 'linear-gradient(0deg, rgba(114,86,247,1) 0%, rgba(120,69,69,1) 100%)'
+    },
     sidebar: {
       main: 'linear-gradient(0deg, rgba(247,141,86,1) 0%, rgb(228, 89, 40) 100%)'
     },

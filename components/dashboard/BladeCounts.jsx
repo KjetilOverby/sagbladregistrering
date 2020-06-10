@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles, Typography, Grid, Divider } from '@material-ui/core';
 
 
@@ -87,7 +87,10 @@ const BladeCounts = ({blades}) => {
   );
   
   
-   
+   const [time, setTime] = useState(new Date())
+   console.log('====================================');
+   console.log(time);
+   console.log('====================================');
 const classes = useStyles()
 return (
 <div>

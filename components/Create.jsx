@@ -14,6 +14,7 @@ import { array } from 'prop-types';
 import { get } from 'mongoose';
 import TripOriginIcon from '@material-ui/icons/TripOrigin';
 import StarsIcon from '@material-ui/icons/Stars';
+var dateFormat = require('dateformat');
 
 // https://images.unsplash.com/photo-1470165473874-023613603389?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80
 // https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80
@@ -95,11 +96,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Create = (props) => {
   const classes = useStyles();
+  const date = new Date()
+  const newRegDate = dateFormat(date) 
+ 
+
+  const [regDate, setregDate] = useState(new Date())
   const [currency, setCurrency] = useState();
-  const [form, setForm] = useState({ serial: '', registDate: '', type: '' });
+  const [form, setForm] = useState({ serial: '', registDate: '', type: '', updated: newRegDate });
   const serial = form.serial;
   const [serialList, setSerialList] = useState([]);
+    
 
+ 
+ 
   const createBlade = async () => {
     try {
       const res = await fetch(props.url, {
@@ -117,11 +126,12 @@ const Create = (props) => {
     }
   };
  
-
+ 
+  
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(form.serial === '' || form.registDate === '' || form.type === '') {
+    if(form.serial === '' || form.type === '') {
       alert('Du må fylle ut feltene')
     } else {
     createBlade();
@@ -228,14 +238,14 @@ const Create = (props) => {
             label="Serial"
             onChange={handleChange}
           />
-          <TextField
+          {/* <TextField
          
             required
             variant="outlined"
             label="Registreringsdato"
             onChange={handleChange}
             name="registDate"
-          />
+          /> */}
           <Button onClick={handleSubmit} variant="outlined">
             Submit
           </Button>
@@ -253,7 +263,7 @@ const Create = (props) => {
         <Grid direction="column" container>
           {serialList.map((list) => {
             return (
-              <div>
+              <div key={list}>
                 <ul>
                 
                   <li className={classes.listItem}><StarsIcon />{list}</li>
