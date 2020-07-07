@@ -4,7 +4,7 @@ import BladeCounts from '../components/dashboard/BladeCounts'
 import baseUrl from '../utils/baseUrl';
 
 export default function Dashboard({blades, counters}) {
-    console.log(counters);
+    
     
   return (
    <div>

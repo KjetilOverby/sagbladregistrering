@@ -88,9 +88,7 @@ const BladeCounts = ({blades}) => {
   
   
    const [time, setTime] = useState(new Date())
-   console.log('====================================');
-   console.log(time);
-   console.log('====================================');
+ 
 const classes = useStyles()
 return (
 <div>

@@ -9,6 +9,7 @@ import {
   Container,
   ThemeProvider,
   Divider,
+  ButtonBase,
 } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -27,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   mainContainer: {
     height: '200em',
      background: 'linear-gradient(0deg, rgba(86,231,247,1) 0%, rgba(48,61,61,1) 100%)',
+     position: 'relative',
      
      [theme.breakpoints.down('xs')]: {
         background: theme.palette.sidebar.main
@@ -104,6 +106,37 @@ const useStyles = makeStyles((theme) => ({
     padding: '1rem',
     fontStyle: 'italic',
     color: theme.palette.appText.main
+  },
+  modal:{
+    position: 'absolute',
+    height: '80vh',
+    width: '80vw',
+    background: 'white',
+    zIndex: 100,
+    margin: '50% 50%',
+    transform: 'translate(-50%, -50%)',
+    border: '2px solid gray',
+    borderRadius: '10px',
+    boxShadow: '10px 10px 20px black',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '20em'
+    },
+  },
+  okBtn: {
+    marginLeft: '2rem',
+  },
+  modalContainer: {
+    width: '100vw',
+    height: '100vh',
+  },
+  performerBox: {
+    width: '45%'
+  },
+  modalHeader: {
+    margin: '2rem',
+    fontSize: '1.2rem',
+    color: 'orangered',
+    fontWeight: 'bold'
   }
 }));
 
@@ -115,6 +148,8 @@ const Edit = ({ blade, header, back, updateUrl }) => {
   const [toShowList, setToShowList] = useState()
   const [showList, setShowList] = useState([])
   const router = useRouter();
+
+  const [openretipModal, setOpenretipModal] = useState(false)
 
   // const [selectedDate, setSelectedDate] = React.useState(
   //   new Date('2014-08-18T21:11:54')
@@ -141,6 +176,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
     
     updateBlade();
     setShowList([...showList, form])
+    setOpenretipModal(true)
     
   };
 
@@ -197,8 +233,60 @@ const Edit = ({ blade, header, back, updateUrl }) => {
     createComment();
   };
 
+  const okButton = () => {
+    setOpenretipModal(false)
+    router.push('/globalblades/blades/blade')
+  }
+
+
+  {if(openretipModal) {
+    return (
+      <div className={classes.modalContainer}>
+      <Grid container className={classes.modal}>
+        <Typography className={classes.modalHeader}>En omlodding ble lagt til</Typography>
+        <Grid item className={classes.performerBox}>
+        <Typography className={classes.retipText}>{performFilter[0]}</Typography>
+        <Typography className={classes.retipText}>{performFilter[1]}</Typography>
+        <Typography className={classes.retipText}>{performFilter[2]}</Typography>
+        <Typography className={classes.retipText}>{performFilter[3]}</Typography>
+        <Typography className={classes.retipText}>{performFilter[4]}</Typography>
+        {showList.map((list) => {
+          return (
+            <div>
+            <Typography className={classes.newPerformer} variant='h5'>{list.performer}</Typography>
+            </div>
+          )
+        })}
+        
+        </Grid>
+        <Grid item className={classes.dateBox}>
+        <Typography className={classes.retipText}>{dateFilter[0]}</Typography>
+        <Typography className={classes.retipText}>{dateFilter[1]}</Typography>
+        <Typography className={classes.retipText}>{dateFilter[2]}</Typography>
+        <Typography className={classes.retipText}>{dateFilter[3]}</Typography>
+        <Typography className={classes.retipText}>{dateFilter[4]}</Typography>
+        {showList.map((list) => {
+          return (
+            <div>
+            <Typography className={classes.newPerformer} variant='h5'>{list.date}</Typography>
+            </div>
+          )
+        })}
+        
+        </Grid>
+        <Grid item>
+        <Button onClick={okButton} className={classes.okBtn} variant='contained'>OK</Button>
+        </Grid>
+      </Grid>
+      
+      </div>
+    )
+  }
+}
   return (
     <div className={classes.mainContainer}>
+
+
     <Container>
       <Grid direction="column" container>
       <Grid  container>
@@ -209,13 +297,13 @@ const Edit = ({ blade, header, back, updateUrl }) => {
           className={classes.retipInputContainer}
         >
         <Typography variant='h2'>{header}</Typography>
-          <Typography variant="h4">
+          <Typography variant="h6">
             Legg til omloddinger
           </Typography>
-          <Typography className={classes.serialHeader} variant='h5'>
+          <Typography className={classes.serialHeader} variant='h6'>
              {blade.type}
           </Typography>
-          <Typography className={classes.serialHeader} variant='h5'>
+          <Typography className={classes.serialHeader} variant='h6'>
              {blade.serial}
           </Typography>
 
@@ -301,7 +389,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
           <Grid item>
 
          
-          <Typography className={classes.retipText}>{dateFilter[0]}</Typography>
+          
           <Divider />
           <Typography className={classes.retipText}>{dateFilter[1]}</Typography>
           <Divider />

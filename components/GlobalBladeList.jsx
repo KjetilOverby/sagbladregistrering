@@ -9,6 +9,7 @@ import {
   Grid,
   Hidden,
   Divider,
+  Popover,
 } from '@material-ui/core';
 import Link from 'next/link';
 import K2236 from './Kanefusa/K2236';
@@ -26,6 +27,12 @@ import Nvs66hoyre from './Nessjø/Nvs66hoyre';
 import Nvs66venstre from './Nessjø/Nvs66venstre';
 
 import EventNoteIcon from '@material-ui/icons/EventNote';
+
+var dateFormat = require('dateformat');
+var moment = require('moment');
+moment().format();
+
+console.log(moment().format('LLLL'));
 const useStyles = makeStyles((theme) => ({
   header: {
     margin: '.6em 5em',
@@ -73,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       padding: '1em',
       flexDirection: 'column',
-      maxWidth: '100vw',
+      minWidth: '100vw',
     },
   },
 
@@ -118,6 +125,7 @@ const useStyles = makeStyles((theme) => ({
   tableTextDate: {
     width: '10em',
     marginRight: '3rem',
+    cursor: 'pointer',
     [theme.breakpoints.down('lg')]: {
       width: '7em',
       marginRight: 0,
@@ -197,7 +205,7 @@ const useStyles = makeStyles((theme) => ({
   },
   searchContainer: {
     [theme.breakpoints.down('xs')]: {
-      background: '#02213c',
+      background: 'gray',
       paddingTop: '2em',
       width: '100vw',
     },
@@ -213,7 +221,7 @@ const useStyles = makeStyles((theme) => ({
   searchResult: {
     marginRight: '1rem',
     [theme.breakpoints.down('xs')]: {
-      margin: '0 1rem 4em 2em',
+      margin: '0 1rem 0.5em 2em',
     },
   },
   noteIconContainer: {
@@ -221,6 +229,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
+  
+  nullStillBtn: {
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: '3em',
+      marginBottom: '3em'
+    },
+   
+  },
+  searchContainer2: {
+    [theme.breakpoints.down('xs')]: {
+      
+    },
+  }
 }));
 const BladeList = ({
   blades,
@@ -248,7 +269,8 @@ const BladeList = ({
   // sawblades
 
   const [backgroundColor, setBackgroundColor] = useState('red');
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState();
+ 
   // const bladeData = JSON.parse(data);
   const classes = useStyles();
 
@@ -262,50 +284,73 @@ const BladeList = ({
     blade.serial.includes(searchInput)
   );
 
+
   return (
     <Grid container className={classes.mainContainer}>
       {allBlades && (
         <>
-          <Grid item>
-            <Typography className={classes.header} color="primary" variant="h2">
-              {header}
-            </Typography>
-          </Grid>
+          <Hidden xsDown>
+            <Grid item>
+              <Typography
+                className={classes.header}
+                color="primary"
+                variant="h2"
+              >
+                {header}
+              </Typography>
+            </Grid>
+          </Hidden>
           <div className={classes.searchContainer}>
             <Grid item className={classes.textTopContiner}>
               <Typography className={classes.antallText} variant="h5">
                 Antall sagblad: {blades.data.length}
               </Typography>
-
-              <Link href={createLink}>
-                <Button
-                  color="primary"
-                  className={classes.leggTilBtn}
-                  variant="contained"
-                >
-                  Legg til sagblad
-                </Button>
-              </Link>
-
+              <Hidden xsDown>
+                <Link href={createLink}>
+                  <Button
+                    color="primary"
+                    className={classes.leggTilBtn}
+                    variant="contained"
+                  >
+                    Legg til sagblad
+                  </Button>
+                </Link>
+              </Hidden>
               <TextField
-                inputProps={{ style: { color: 'white', fontSize: '1.5rem' } }}
+                className={classes.inputs}
                 color="secondary"
                 className={classes.search}
                 placeholder="Søk"
                 onChange={getSearchInput}
+                value={searchInput}
+                inputProps={{ inputMode: 'numeric' }}
+                color="primary"
               />
-              <Grid container>
+              <Grid container className={classes.searchContainer2}>
+                
+                <Grid container>
                 <Grid item>
                   <Typography className={classes.searchResult} variant="h5">
                     Søkeresultat:{' '}
                   </Typography>
-                </Grid>
-                <Grid item>
+                  </Grid>
+                  <Grid item>
                   <Typography variant="h5">
                     {searchInput === '' ? 'Ingen søk' : filter.length}
                   </Typography>
+                  </Grid>
                 </Grid>
+               
+                
+              
+                 <Grid item className={classes.nullStillBtnContainer}>
+                 <Button color='primary' variant='contained' onClick={() => setSearchInput('')} className={classes.nullStillBtn}>
+                Nullstill søk
+              </Button>
+                 </Grid>
               </Grid>
+
+            
             </Grid>
           </div>
 
@@ -316,6 +361,8 @@ const BladeList = ({
       </Grid>  */}
 
           {filter.map((blade) => {
+            const autoRegDate = dateFormat(blade.updated, 'dd. mm. yyyy');
+
             const performFilter = blade.performer.filter(function (bladeFilt) {
               return bladeFilt !== null || undefined;
             });
@@ -325,76 +372,81 @@ const BladeList = ({
 
             return (
               <Grid container key={blade._id}>
-                <Grid className={classes.bladeContainer}>
-                  <Grid className={classes.dotAndTypeContainer} container>
-                    {performFilter.length < 2 && (
-                      <div className={classes.colorDot1}></div>
-                    )}
-                    {performFilter.length === 2 && (
-                      <div className={classes.colorDot2}></div>
-                    )}
-                    {performFilter.length > 2 && (
-                      <div className={classes.colorDot3}></div>
-                    )}
-                    <Typography className={classes.type}>
-                      {blade.type}
-                    </Typography>
-                  </Grid>
-                  <Grid className={classes.serialDateContainer} container>
-                    <Grid item>
-                      <Typography className={classes.tableTextSerial}>
-                        {blade.serial}
+                {searchInput && (
+                  <Grid className={classes.bladeContainer}>
+                    <Grid className={classes.dotAndTypeContainer} container>
+                      {performFilter.length <= 1 && (
+                        <div className={classes.colorDot1}></div>
+                      )}
+                      {performFilter.length === 2 && (
+                        <div className={classes.colorDot2}></div>
+                      )}
+                      {performFilter.length > 2 && (
+                        <div className={classes.colorDot3}></div>
+                      )}
+                      <Typography className={classes.type}>
+                        {blade.type}
                       </Typography>
                     </Grid>
-
-                    <Grid item>
-                      <Typography className={classes.tableTextDate}>
-                        {blade.registDate}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                  <Grid item>
-                    <Grid direction="row" container>
+                    <Grid className={classes.serialDateContainer} container>
                       <Grid item>
-                        <Hidden mdUp>
-                          <Typography
-                            className={classes.tableTextNumberPerform}
-                          >
-                            Antall omloddinger:{' '}
-                          </Typography>
-                        </Hidden>
+                        <Typography className={classes.tableTextSerial}>
+                          {blade.serial}
+                        </Typography>
                       </Grid>
+
                       <Grid item>
-                        <Typography className={classes.tableTextNumberPerform}>
-                          {performFilter.length}
+                        <Typography className={classes.tableTextDate}>
+                          {(blade.registDate && blade.registDate) ||
+                            (blade.updated && autoRegDate)}
                         </Typography>
                       </Grid>
                     </Grid>
-                  </Grid>
-                  <Grid className={classes.buttonContainer} container>
                     <Grid item>
-                      <Link href={`${editLink1}/${blade._id}${editLink2}`}>
-                        <Button className={classes.btn} variant="outlined">
-                          Rediger
-                        </Button>
-                      </Link>
+                      <Grid direction="row" container>
+                        <Grid item>
+                          <Hidden mdUp>
+                            <Typography
+                              className={classes.tableTextNumberPerform}
+                            >
+                              Antall omloddinger:{' '}
+                            </Typography>
+                          </Hidden>
+                        </Grid>
+                        <Grid item>
+                          <Typography
+                            className={classes.tableTextNumberPerform}
+                          >
+                            {performFilter.length}
+                          </Typography>
+                        </Grid>
+                      </Grid>
                     </Grid>
-                    <Grid item>
-                      <Link href={`${viewLink}/${blade._id}`}>
-                        <Button
-                          className={classes.btn}
-                          variant="outlined"
-                          color="secondary"
-                        >
-                          Vis
-                        </Button>
-                      </Link>
-                    </Grid>
-                    <Grid className={classes.noteIconContainer} item>
-                      {commentFilter.length > 0 && <EventNoteIcon />}
+                    <Grid className={classes.buttonContainer} container>
+                      <Grid item>
+                        <Link href={`${editLink1}/${blade._id}${editLink2}`}>
+                          <Button className={classes.btn} variant="outlined">
+                            Rediger
+                          </Button>
+                        </Link>
+                      </Grid>
+                      <Grid item>
+                        <Link href={`${viewLink}/${blade._id}`}>
+                          <Button
+                            className={classes.btn}
+                            variant="outlined"
+                            color="secondary"
+                          >
+                            Vis
+                          </Button>
+                        </Link>
+                      </Grid>
+                      <Grid className={classes.noteIconContainer} item>
+                        {commentFilter.length > 0 && <EventNoteIcon />}
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
+                )}
               </Grid>
             );
           })}

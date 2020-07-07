@@ -76,7 +76,7 @@ const blade = ({ blades }) => {
       nvs66hoyre={nvs66hoyre}
       nvs66venstre={nvs66venstre}
       blades={blades} 
-      header='Alle blad'
+      header='Søk i alle sagblad'
       createLink='/globalblades/blades/createBlade'
       editLink1='/blades_id'
       editLink2='/editBlades'

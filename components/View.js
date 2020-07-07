@@ -161,7 +161,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
     }
   };
  
- const datFormat = dateFormat(blade.updated)
+ const datFormat = dateFormat(blade.updated, " dddd mmmm dd - yyyy, HH:MM")
   const performFilter = blade.performer.filter(function (bladeFilt) {
     return bladeFilt !== null || undefined;
   });

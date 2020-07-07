@@ -5,7 +5,7 @@ import { red } from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#f9713f',
+      main: '#48d1cc',
     },
     secondary: {
       main: '#00ff7f',
@@ -23,7 +23,7 @@ const theme = createMuiTheme({
        main: '#fa7a4b'
     },
     editBox: {
-       main: 'linear-gradient(0deg, rgba(114,86,247,1) 0%, rgba(120,69,69,1) 100%)'
+       main: 'linear-gradient(0deg, gray 0%, white 100%)'
     },
     sidebar: {
       main: 'linear-gradient(0deg, rgba(247,141,86,1) 0%, rgb(228, 89, 40) 100%)'
