@@ -22,6 +22,19 @@ import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     height: '200em',
@@ -140,6 +153,10 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     width: '19rem',
   },
+  modalText: {
+    color: 'orangered'
+  },
+ 
 }));
 
 const Edit = ({ blade, header, back, updateUrl }) => {
@@ -153,6 +170,8 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
   const [openretipModal, setOpenretipModal] = useState(false);
   const [openComments, setOpenComments] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   // const [selectedDate, setSelectedDate] = React.useState(
   //   new Date('2014-08-18T21:11:54')
@@ -174,7 +193,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
     updateBlade();
     setShowList([...showList, form]);
-    setOpenretipModal(true);
+    setOpen(true);
   };
 
   const handleChange = (e) => {
@@ -238,98 +257,101 @@ const Edit = ({ blade, header, back, updateUrl }) => {
     router.push('/globalblades/blades/blade');
     setOpenComments(false);
   };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-  {
-    if (openretipModal) {
-      return (
-        <div className={classes.modalContainer}>
-          <Grid container className={classes.modal}>
-            <Typography className={classes.modalHeader}>
-              En omlodding ble lagt til
-            </Typography>
-            <Grid item className={classes.performerBox}>
-              <Typography className={classes.retipText}>
-                {performFilter[0]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {performFilter[1]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {performFilter[2]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {performFilter[3]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {performFilter[4]}
-              </Typography>
-              {showList.map((list) => {
-                return (
-                  <div>
-                    <Typography className={classes.newPerformer} variant="h5">
-                      {list.performer}
-                    </Typography>
-                  </div>
-                );
-              })}
-            </Grid>
-            <Grid item className={classes.dateBox}>
-              <Typography className={classes.retipText}>
-                {dateFilter[0]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {dateFilter[1]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {dateFilter[2]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {dateFilter[3]}
-              </Typography>
-              <Typography className={classes.retipText}>
-                {dateFilter[4]}
-              </Typography>
+  // {
+  //   if (openretipModal) {
+  //     return (
+  //       <div className={classes.modalContainer}>
+  //         <Grid container className={classes.modal}>
+  //           <Typography className={classes.modalHeader}>
+  //             En omlodding ble lagt til
+  //           </Typography>
+  //           <Grid item className={classes.performerBox}>
+  //             <Typography className={classes.retipText}>
+  //               {performFilter[0]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {performFilter[1]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {performFilter[2]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {performFilter[3]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {performFilter[4]}
+  //             </Typography>
+  //             {showList.map((list) => {
+  //               return (
+  //                 <div>
+  //                   <Typography className={classes.newPerformer} variant="h5">
+  //                     {list.performer}
+  //                   </Typography>
+  //                 </div>
+  //               );
+  //             })}
+  //           </Grid>
+  //           <Grid item className={classes.dateBox}>
+  //             <Typography className={classes.retipText}>
+  //               {dateFilter[0]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {dateFilter[1]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {dateFilter[2]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {dateFilter[3]}
+  //             </Typography>
+  //             <Typography className={classes.retipText}>
+  //               {dateFilter[4]}
+  //             </Typography>
               
-              {showList.map((list) => {
-                return (
-                  <div>
+  //             {showList.map((list) => {
+  //               return (
+  //                 <div>
                   
-                    <Typography className={classes.newPerformer} variant="h5">
-                      {list.date}
-                    </Typography>
-                  </div>
-                );
-              })}
-            </Grid>
-            <Grid item>
-              <Button
-                onClick={okButton}
-                className={classes.okBtn}
-                variant="contained"
-              >
-                OK
-              </Button>
-            </Grid>
-          </Grid>
-        </div>
-      );
-    }
-  }
-  {
-    if (openComments) {
-      return (
-        <div className={classes.modalContainer}>
-          <Typography>En kommentar ble lagt til</Typography>
+  //                   <Typography className={classes.newPerformer} variant="h5">
+  //                     {list.date}
+  //                   </Typography>
+  //                 </div>
+  //               );
+  //             })}
+  //           </Grid>
+  //           <Grid item>
+  //             <Button
+  //               onClick={okButton}
+  //               className={classes.okBtn}
+  //               variant="contained"
+  //             >
+  //               OK
+  //             </Button>
+  //           </Grid>
+  //         </Grid>
+  //       </div>
+  //     );
+  //   }
+  // }
+  // {
+  //   if (openComments) {
+  //     return (
+  //       <div className={classes.modalContainer}>
+  //         <Typography>En kommentar ble lagt til</Typography>
 
-          <Typography>{blade.comment}</Typography>
+  //         <Typography>{blade.comment}</Typography>
 
-          <Button onClick={commentOkBtn} variant="contained">
-            OK
-          </Button>
-        </div>
-      );
-    }
-  }
+  //         <Button onClick={commentOkBtn} variant="contained">
+  //           OK
+  //         </Button>
+  //       </div>
+  //     );
+  //   }
+  // }
   return (
     <div className={classes.mainContainer}>
       <Container>
@@ -513,6 +535,57 @@ const Edit = ({ blade, header, back, updateUrl }) => {
             </Grid>
           </Grid>
         </Grid>
+
+
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">
+            Du har lagt til en ny ommlodding på: 
+            <span className={classes.modalText}> {blade.serial}</span>
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              Tidligere omloddinger: 
+          
+            </DialogContentText>
+
+             <Typography>{!blade.performer ? 'Ingen omloddinger' : ' '}</Typography>
+            <Typography>{blade.performer[0]} {' '} {blade.date[0]}</Typography>
+            <Typography>{blade.performer[1]} {' '} {blade.date[1]}</Typography>
+            <Typography>{blade.performer[2]} {' '} {blade.date[2]}</Typography>
+            <Typography>{blade.performer[3]} {' '} {blade.date[3]}</Typography>
+            <Typography>{blade.performer[4]} {' '} {blade.date[4]}</Typography>
+             
+             
+
+            <DialogContentText id="alert-dialog-slide-description">
+              Lagt til i dag: 
+          
+            </DialogContentText>
+            {showList.map((list) => {
+                return (
+                  <div>
+                    <Typography className={classes.modalText} variant="h5">
+                      {list.performer}: {list.date}
+                    </Typography>
+                  </div>
+                );
+              })}
+          </DialogContent>
+          <DialogActions>
+           
+            <Button color='primary' onClick={okButton} variant='contained' className={classes.deleteBtn}>
+             OK
+            </Button>
+          </DialogActions>
+        </Dialog>
+
       </Container>
     </div>
   );
