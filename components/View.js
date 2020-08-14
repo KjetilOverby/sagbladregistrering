@@ -18,7 +18,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-   background:'linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,162,1) 50%, rgba(252,176,69,1) 100%)',
     padding: '2em',
     [theme.breakpoints.down('xs')]: {
       background: theme.palette.sidebar.main,

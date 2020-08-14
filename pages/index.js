@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { makeStyles, Input, Grid, TextField } from '@material-ui/core';
-import { useRouter } from 'next/router';
+import { makeStyles, Input, Grid, TextField, Button, Typography } from '@material-ui/core';
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -10,33 +10,34 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
   },
   moelvenContainer: {
-    marginLeft: '3rem',
+    paddingLeft: '3rem',
   },
-
-  formContainer: {
-    margin: '10em auto',
-    background: 'rgba(255,255,255,.8)',
-    padding: '3rem',
-    width: '25em',
-    borderRadius: '5px',
+  headerButtonContainer: {
+     flexDirection: 'column',
+     justifyContent: 'center',
+     alignItems: 'center'
+  }, 
+  header: { 
+    color: 'white',
+    fontWeight: 'bold',
+    margin: '10rem 0',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '3rem',
+      margin: '7rem 0'
+   },
+   [theme.breakpoints.down('sm')]: {
+     fontSize: '2rem'
+   
+   },
+   [theme.breakpoints.down('xs')]: {
+      fontSize: '1.2rem',
+      margin: '3rem 0'
+   },
   },
+ 
 }));
 
 const index = () => {
-  const router = useRouter();
-  const [getPassword, setGetPassword] = useState();
-  const [password, setPassword] = useState();
-  const onChangeHandler = (e) => {
-    setGetPassword(e.target.value);
-  };
-
-  const onSubmit = () => {
-    setPassword(getPassword);
-  };
-
-  if (password === 'slip96') {
-    router.push('/globalblades/blades/blade');
-  }
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -48,16 +49,19 @@ const index = () => {
           />
         </Grid>
       </Grid>
-      <Grid className={classes.formContainer} container>
+      <Grid className={classes.headerButtonContainer} container>
+      <Grid item>
+        <Typography className={classes.header} variant='h2'>Sagbladregister for Moelven Våler</Typography>
+      </Grid>
         <Grid item>
-          <form onSubmit={onSubmit}>
-            <TextField
-              type="password"
-              label="Passord"
-              variant="filled"
-              onChange={onChangeHandler}
-            />
-          </form>
+        <Link href='/api/authentication/login'>
+          <Button variant="contained">LOGIN</Button>
+          </Link>
+        </Grid>
+        <Grid item>
+         <Link href='/globalblades/blades/blade'>
+           <Button variant='contained' style={{marginTop: '5rem'}}>Jump right in</Button>
+         </Link>
         </Grid>
       </Grid>
     </div>

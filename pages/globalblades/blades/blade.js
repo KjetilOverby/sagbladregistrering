@@ -3,12 +3,13 @@ import baseUrl from '../../../utils/baseUrl'
 import GlobalBladeList from '../../../components/GlobalBladeList';
 import { useState, useEffect } from 'react';
 
+
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import BladeCounts from '../../../components/dashboard/BladeCounts';
 var dateFormat = require('dateformat');
 
 
-const blade = ({ blades }) => {
+const blade = ({ blades, user }) => {
 //   var now = new Date();
  
 // // Basic usage
@@ -23,6 +24,8 @@ const blade = ({ blades }) => {
 // console.log(dateFormat(now));
 // // Saturday, June 9th, 2007, 5:46:21 PM
 // })
+
+
   
   
   const [allBlades, setAllBlades] = useState(true)
@@ -43,7 +46,7 @@ const blade = ({ blades }) => {
 
   return (
     <div>
-      <Sidebar
+      {/* <Sidebar
         setAllBlades={setAllBlades}
         setk2236={setk2236}
         setk2438={setk2438}
@@ -58,7 +61,7 @@ const blade = ({ blades }) => {
         setkvs66venstreF={setkvs66venstreF}
         setnvs66hoyre={setnvs66hoyre}
         setnvs66venstre={setnvs66venstre}
-       />
+       /> */}
 
       <GlobalBladeList 
       allBlades={allBlades}
@@ -76,12 +79,11 @@ const blade = ({ blades }) => {
       nvs66hoyre={nvs66hoyre}
       nvs66venstre={nvs66venstre}
       blades={blades} 
-      header='Søk i alle sagblad'
       createLink='/globalblades/blades/createBlade'
       editLink1='/blades_id'
       editLink2='/editBlades'
       viewLink='/blades_id'
-     
+      user={user}
       />
 
 

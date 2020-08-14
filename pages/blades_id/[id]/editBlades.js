@@ -6,7 +6,6 @@ import baseUrl from '../../../utils/baseUrl';
 import Edit from '../../../components/Edit';
 
 const editBlade = ({ blade }) => {
-  console.log(blade);
   
   return (
     <div>

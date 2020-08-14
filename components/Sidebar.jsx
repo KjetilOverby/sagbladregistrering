@@ -330,14 +330,14 @@ function ResponsiveDrawer(props) {
             <ListItemText>Dashboard</ListItemText>
           </ListItem>
         </Link>
-        <Link href="/service">
+     {/*    <Link href="/service">
           <ListItem button>
             <ListItemIcon>
               {<LocalShippingIcon className={classes.icon} />}
             </ListItemIcon>
             <ListItemText>Service</ListItemText>
           </ListItem>
-        </Link>
+        </Link> */}
         {/* {['Dashboard', 'Service', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? : <MailIcon />}</ListItemIcon>
@@ -347,7 +347,7 @@ function ResponsiveDrawer(props) {
       </List>
       <Divider />
 
-      <Link href="/globalblades/blades/blade">
+   {/*    <Link href="/globalblades/blades/blade">
         <div>
           <div onClick={allBlades}>
             <ListItem button>
@@ -355,6 +355,18 @@ function ResponsiveDrawer(props) {
                 <LanguageIcon className={classes.icon} /> 
               </ListItemIcon>
               <ListItemText>Alle blad</ListItemText>
+            </ListItem>
+          </div>
+        </div>
+      </Link> */}
+      <Link href="/globalblades/blades/createBlade">
+        <div>
+          <div>
+            <ListItem button>
+              <ListItemIcon>
+                <LanguageIcon className={classes.icon} /> 
+              </ListItemIcon>
+              <ListItemText>Legg til blad</ListItemText>
             </ListItem>
           </div>
         </div>

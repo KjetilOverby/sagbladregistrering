@@ -5,34 +5,34 @@ import { red } from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#48d1cc',
+      main: '#697184',
     },
     secondary: {
-      main: '#00ff7f',
+      main: '#413F3D',
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#474747',
+      default: '#f2f1ef',
     },
     appColor1: {
-      main: '#fa7a4b'
+      main: '#D8CFD0'
     },
     appText: {
-       main: '#fa7a4b'
+       main: '#6FB3B8'
     },
     editBox: {
        main: 'linear-gradient(0deg, gray 0%, white 100%)'
     },
     sidebar: {
-      main: 'linear-gradient(0deg, rgba(247,141,86,1) 0%, rgb(228, 89, 40) 100%)'
+      main: 'radial-gradient(circle, #697184 12%, #413F3D 69%)'
     },
     bladeList:{
-      main: 'radial-gradient(circle, rgba(70,70,70,1) 12%, rgba(112,112,112,1) 69%)'
+      main: 'radial-gradient(circle, #697184 12%, #413F3D 69%)'
     },
     bladeListHover: {
-      main: 'radial-gradient(circle, rgba(70,70,70,1) 12%, rgba(112,112,112,1) 69%)'
+      main: 'radial-gradient(circle, #697184 12%, #413F3D 69%)'
     }
   },
   sidebarWidth: {

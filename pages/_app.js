@@ -6,12 +6,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import { TextField } from '@material-ui/core';
 import baseUrl from '../utils/baseUrl';
+import useSWR from 'swr';
 
 export default function MyApp(props) {
-
+  const fetcher = (url) => fetch(url).then(res => res.json())
+  const {data, error} = useSWR('/api/authentication/user', fetcher)
   
   const { Component, pageProps } = props;
-
+ 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -19,7 +21,7 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-
+  
   return (
     <React.Fragment>
       <Head>
@@ -30,7 +32,7 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
 
-        <Component {...pageProps} />
+        <Component {...pageProps} user={data}/>
         
       </ThemeProvider>
     </React.Fragment>

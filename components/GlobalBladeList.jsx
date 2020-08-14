@@ -27,6 +27,7 @@ import Nvs66hoyre from './Nessjø/Nvs66hoyre';
 import Nvs66venstre from './Nessjø/Nvs66venstre';
 
 import EventNoteIcon from '@material-ui/icons/EventNote';
+import Header from '../components/Header';
 
 var dateFormat = require('dateformat');
 var moment = require('moment');
@@ -86,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
 
   textTopContiner: {
     margin: '1rem 0 5em 18rem',
-    color: 'white',
+    color: theme.palette.primary.main,
     display: 'flex',
     [theme.breakpoints.down('xs')]: {
       margin: 0,
@@ -111,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
   tableTextSerial: {
     marginRight: '2rem',
     fontWeight: 'bold',
-    color: theme.palette.appColor1.main,
+    color: theme.palette.appText.main,
     width: '15em',
     [theme.breakpoints.down('lg')]: {
       width: '4.6em',
@@ -205,7 +206,6 @@ const useStyles = makeStyles((theme) => ({
   },
   searchContainer: {
     [theme.breakpoints.down('xs')]: {
-      background: 'gray',
       paddingTop: '2em',
       width: '100vw',
     },
@@ -265,6 +265,7 @@ const BladeList = ({
   nvs66hoyre,
   nvs66venstre,
   k2236func,
+  user
 }) => {
   // sawblades
 
@@ -286,18 +287,14 @@ const BladeList = ({
 
 
   return (
+    <>
+    <Header getSearchInput={getSearchInput} value={searchInput} user={user}/>
     <Grid container className={classes.mainContainer}>
       {allBlades && (
         <>
           <Hidden xsDown>
             <Grid item>
-              <Typography
-                className={classes.header}
-                color="primary"
-                variant="h2"
-              >
-                {header}
-              </Typography>
+             
             </Grid>
           </Hidden>
           <div className={classes.searchContainer}>
@@ -305,27 +302,8 @@ const BladeList = ({
               <Typography className={classes.antallText} variant="h5">
                 Antall sagblad: {blades.data.length}
               </Typography>
-              <Hidden xsDown>
-                <Link href={createLink}>
-                  <Button
-                    color="primary"
-                    className={classes.leggTilBtn}
-                    variant="contained"
-                  >
-                    Legg til sagblad
-                  </Button>
-                </Link>
-              </Hidden>
-              <TextField
-                className={classes.inputs}
-                color="secondary"
-                className={classes.search}
-                placeholder="Søk"
-                onChange={getSearchInput}
-                value={searchInput}
-                inputProps={{ inputMode: 'numeric' }}
-                color="primary"
-              />
+            
+           
               <Grid container className={classes.searchContainer2}>
                 
                 <Grid container>
@@ -467,6 +445,7 @@ const BladeList = ({
       {nvs66hoyre && <Nvs66hoyre blades={blades} />}
       {nvs66venstre && <Nvs66venstre blades={blades} />}
     </Grid>
+    </>
   );
 };
 
