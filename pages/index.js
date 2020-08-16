@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
  
 }));
 
-const index = () => {
+const index = (props) => {
+ 
   const classes = useStyles();
   return (
     <div className={classes.container}>

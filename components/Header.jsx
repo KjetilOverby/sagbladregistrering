@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 import { Grid, Button, Hidden } from '@material-ui/core';
+import DrawerComponent from '../components/DrawerComponent';
 
 import Link from 'next/link';
 
@@ -82,14 +83,11 @@ export default function SearchAppBar({ user, value, getSearchInput }) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+        <Hidden mdUp>
+          <DrawerComponent user={user}/>
+        </Hidden>
+         
+          
           <Hidden smDown>
           <Typography className={classes.title} variant="h6" noWrap>
             Sagbladregister

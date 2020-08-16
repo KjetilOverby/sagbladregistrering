@@ -2,10 +2,13 @@ import Sidebar from '../../../components/Sidebar';
 import baseUrl from '../../../utils/baseUrl'
 import GlobalBladeList from '../../../components/GlobalBladeList';
 import { useState, useEffect } from 'react';
+import MoelvenVaaler from '../../../components/HocAccess/MoelvenVaaler';
 
 
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import BladeCounts from '../../../components/dashboard/BladeCounts';
+import NoAccessPage from '../../../components/NoAccessPage';
+import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 var dateFormat = require('dateformat');
 
 
@@ -62,7 +65,8 @@ const blade = ({ blades, user }) => {
         setnvs66hoyre={setnvs66hoyre}
         setnvs66venstre={setnvs66venstre}
        /> */}
-
+{
+   user !== undefined && user.sub === 'google-oauth2|106500081074791056792' &&
       <GlobalBladeList 
       allBlades={allBlades}
       k2236={k2236}
@@ -88,8 +92,15 @@ const blade = ({ blades, user }) => {
 
 
   
+      }
       
+
+      {user && user.sub !== 'google-oauth2|106500081074791056792' && 
+      
+      <NoAccessPage user={user}/>
+      }
     
+      
 
     </div>
   );
