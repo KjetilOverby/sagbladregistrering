@@ -4,9 +4,7 @@ import { makeStyles, Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({}));
 const NoAccessPage = (props) => {
-  console.log('====================================');
-  console.log(props.user);
-  console.log('====================================');
+ 
   const classes = useStyles();
   return (
     <div>

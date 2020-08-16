@@ -3,6 +3,7 @@ import baseUrl from '../../../utils/baseUrl'
 import GlobalBladeList from '../../../components/GlobalBladeList';
 import { useState, useEffect } from 'react';
 import MoelvenVaaler from '../../../components/HocAccess/MoelvenVaaler';
+import ReadOnly from '../../../components/LimitedAccess/ReadOnly';
 
 
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
@@ -66,7 +67,7 @@ const blade = ({ blades, user }) => {
         setnvs66venstre={setnvs66venstre}
        /> */}
 {
-   user !== undefined && user.sub === 'google-oauth2|106500081074791056792' &&
+   user !== undefined && user.sub === process.env.MOELVEN_AUTH &&
       <GlobalBladeList 
       allBlades={allBlades}
       k2236={k2236}
@@ -93,9 +94,17 @@ const blade = ({ blades, user }) => {
 
   
       }
+      {user !== undefined && user.sub === process.env.MY_ACCOUNT &&
+        <ReadOnly 
+          user={user}
+          blades={blades} 
+          allBlades={allBlades}
+          viewLink='/blades_id'
+        />
+      }
       
 
-      {user && user.sub !== 'google-oauth2|106500081074791056792' && 
+      {user && user.sub !== process.env.MOELVEN_AUTH && user.sub !== process.env.MY_ACCOUNT &&
       
       <NoAccessPage user={user}/>
       }

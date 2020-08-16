@@ -59,11 +59,7 @@ const index = (props) => {
           <Button variant="contained">LOGIN</Button>
           </Link>
         </Grid>
-        <Grid item>
-         <Link href='/globalblades/blades/blade'>
-           <Button variant='contained' style={{marginTop: '5rem'}}>Jump right in</Button>
-         </Link>
-        </Grid>
+     
       </Grid>
     </div>
   );

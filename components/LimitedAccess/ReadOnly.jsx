@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, user } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import {
   makeStyles,
@@ -12,22 +12,10 @@ import {
   Popover,
 } from '@material-ui/core';
 import Link from 'next/link';
-import K2236 from './Kanefusa/K2236';
-import K2438 from './Kanefusa/K2438';
-import K2640 from './Kanefusa/K2640';
-import K2842 from './Kanefusa/K2842';
-import K3044 from './Kanefusa/K3044';
-import K3246 from './Kanefusa/K3246';
-import Kvs66hoyre from './Kanefusa/Kvs66hoyre';
-import Kvs66venstre from './Kanefusa/Kvs66venstre';
-import KnBlad from './Kanefusa/KnBlad';
-import Kvs66hoyreF from './Kanefusa/KvshoyreF';
-import Kvs66venstreF from './Kanefusa/Kvs66venstreF';
-import Nvs66hoyre from './Nessjø/Nvs66hoyre';
-import Nvs66venstre from './Nessjø/Nvs66venstre';
+
 
 import EventNoteIcon from '@material-ui/icons/EventNote';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 var dateFormat = require('dateformat');
 var moment = require('moment');
@@ -401,13 +389,7 @@ const BladeList = ({
                       </Grid>
                     </Grid>
                     <Grid className={classes.buttonContainer} container>
-                      <Grid item>
-                        <Link href={`${editLink1}/${blade._id}${editLink2}`}>
-                          <Button className={classes.btn} variant="outlined">
-                            Rediger
-                          </Button>
-                        </Link>
-                      </Grid>
+                    
                       <Grid item>
                         <Link href={`${viewLink}/${blade._id}`}>
                           <Button
@@ -431,19 +413,7 @@ const BladeList = ({
         </>
       )}
 
-      {k2236 && <K2236 k2236func={k2236func} blades={blades} />}
-      {k2438 && <K2438 blades={blades} />}
-      {k2640 && <K2640 blades={blades} />}
-      {k2842 && <K2842 blades={blades} />}
-      {k3044 && <K3044 blades={blades} />}
-      {k3246 && <K3246 blades={blades} />}
-      {kvs66hoyre && <Kvs66hoyre blades={blades} />}
-      {kvs66venstre && <Kvs66venstre blades={blades} />}
-      {knBlad && <KnBlad blades={blades} />}
-      {kvs66hoyreF && <Kvs66hoyreF blades={blades} />}
-      {kvs66venstreF && <Kvs66venstreF blades={blades} />}
-      {nvs66hoyre && <Nvs66hoyre blades={blades} />}
-      {nvs66venstre && <Nvs66venstre blades={blades} />}
+  
     </Grid>
     </>
   );

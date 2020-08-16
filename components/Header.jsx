@@ -95,6 +95,7 @@ export default function SearchAppBar({ user, value, getSearchInput }) {
           </Hidden>
           <Grid container>
             <Grid item>
+{  user !== undefined && user.sub === process.env.MOELVEN_AUTH &&
             <Hidden smDown>
               <Link href="/globalblades/blades/createBlade">
                 <Button
@@ -106,6 +107,7 @@ export default function SearchAppBar({ user, value, getSearchInput }) {
                 </Button>
               </Link>
               </Hidden>
+              }
             </Grid>
           </Grid>
           <div className={classes.search}>

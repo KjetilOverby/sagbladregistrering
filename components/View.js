@@ -135,7 +135,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const View = ({ blade, back, deleteUrl, pushUrl }) => {
+const View = ({ blade, back, deleteUrl, pushUrl, user }) => {
+  console.log('====================================');
+  console.log(user);
+  console.log('====================================');
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -266,6 +269,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
                 </Button>
               </Link>
             </Grid>
+{user !== undefined && user.sub === process.env.MOELVEN_AUTH &&
             <Grid item>
               <Button
                 onClick={handleClickOpen}
@@ -275,6 +279,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
                 <DeleteIcon fontSize="small" /> Slett
               </Button>
             </Grid>
+            }
           </Grid>
         
         </Grid>
@@ -291,6 +296,7 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
             Du er i ferd med å slette{' '}
             <span className={classes.span}>{blade.serial}</span>
           </DialogTitle>
+
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
               Er du sikker på at du vil slette{' '}
@@ -300,13 +306,16 @@ const View = ({ blade, back, deleteUrl, pushUrl }) => {
               Slettingen kan ikke angres!
             </DialogContentText>
           </DialogContent>
+          
           <DialogActions>
             <Button onClick={handleClose} color="secondary">
               Avbryt
             </Button>
+
             <Button onClick={deleteBlade} className={classes.deleteBtn}>
               Slett
             </Button>
+            
           </DialogActions>
         </Dialog>
       </div>

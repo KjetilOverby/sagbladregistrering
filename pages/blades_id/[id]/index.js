@@ -4,7 +4,7 @@ import ViewIndex from '../../../components/ViewIndex';
 import View from '../../../components/View';
 import baseUrl from '../../../utils/baseUrl';
 
-const blades_id = ({ blade }) => {
+const blades_id = ({ blade, user }) => {
  console.log('hello: ' + blade);
  
   return (
@@ -22,6 +22,7 @@ const blades_id = ({ blade }) => {
         pushUrl="/globalblades/blades/blade"
         header="No header yet"
         back="/globalblades/blades/blade"
+        user={user}
       />
     </div>
   );
