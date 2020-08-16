@@ -81,14 +81,18 @@ export default function TemporaryDrawer(props) {
           </ListItem>
           </Link>
           <Divider />
+          {props.user.sub === process.env.MOELVEN_AUTH &&
         <Link href='/globalblades/blades/createBlade'>
+
           <ListItem className={classes.listItemBtn} button>
           <LibraryAddIcon className={classes.icons} style={{margin: '0 2rem 0 1rem'}}/>
           <Typography className={classes.listText} style={{fontWeight: 'bold'}}>Legg til blad</Typography>
-            <ListItemIcon></ListItemIcon>
-            <ListItemText />
+            
+            
           </ListItem>
+          
           </Link>
+          }
           <Divider />
        {/* {!props.user || props.user.error &&
         <Link href='/api/authentication/login'>

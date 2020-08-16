@@ -136,9 +136,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const View = ({ blade, back, deleteUrl, pushUrl, user }) => {
-  console.log('====================================');
-  console.log(user);
-  console.log('====================================');
+
   const router = useRouter();
   const [open, setOpen] = useState(false);
 

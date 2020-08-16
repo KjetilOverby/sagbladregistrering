@@ -38,8 +38,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     height: '200em',
-    background:
-      'linear-gradient(4deg, rgba(150,150,150,1) 0%, rgba(217,217,217,1) 100%)',
+    background: theme.palette.primary.main,
 
     [theme.breakpoints.down('xs')]: {},
   },
@@ -50,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.bladeList.main,
     padding: '2rem',
     borderRadius: '10px',
+    [theme.breakpoints.up('md')]: {
+      boxShadow: '10px 10px 20px black',
+    },
+    
     [theme.breakpoints.down('xs')]: {
       margin: 0,
     },
@@ -65,9 +68,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {},
   },
   serialHeader: {
-    color: 'gray',
+    color: theme.palette.appColor1.main,
     fontWeight: 'bold',
-    margin: '1em 0',
+    margin: '.2em 0',
   },
   retipTextContainer: {
     color: theme.palette.primary,
@@ -103,12 +106,16 @@ const useStyles = makeStyles((theme) => ({
   },
   commentContainer: {
     marginTop: '10em',
-    width: '20em',
+    width: '40em',
     padding: '2rem',
     background: 'white',
+    boxShadow: '10px 10px 20px black',
+    borderRadius: '10px',
     [theme.breakpoints.down('xs')]: {
-      width: '99vw',
+      width: '100vw',
       marginLeft: '-1em',
+      borderRadius: '0',
+    
     },
   },
   newPerformer: {
@@ -156,12 +163,18 @@ const useStyles = makeStyles((theme) => ({
   modalText: {
     color: 'orangered'
   },
+  cancelBtn: {
+    width: '5rem',
+    marginTop: '5em',
+    marginLeft: '3em'
+  }
  
 }));
 
 const Edit = ({ blade, header, back, updateUrl }) => {
+
   const classes = useStyles();
-  const [form, setForm] = useState({ performer: 'Stridsbergs' });
+  const [form, setForm] = useState({ performer: 'Stridsbergs', date: '' });
   const [comment, setComment] = useState('');
 
   const [toShowList, setToShowList] = useState();
@@ -173,12 +186,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
   const [open, setOpen] = useState(false);
 
-  // const [selectedDate, setSelectedDate] = React.useState(
-  //   new Date('2014-08-18T21:11:54')
-  // );
-  // const handleDateChange = (date) => {
-  //   setSelectedDate(date);
-  // };
+ 
 
   const performFilter = blade.performer.filter(function (bladeFilt) {
     return bladeFilt !== null || undefined;
@@ -190,15 +198,20 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+     if(form.date === '') {
+       alert('Du må skrive inn dato')
+     } else {
     updateBlade();
     setShowList([...showList, form]);
     setOpen(true);
+}
   };
-
+  
   const handleChange = (e) => {
+   
     setForm({ ...form, [e.target.name]: e.target.value });
     setToShowList(e.target.value);
+    
   };
   const handleComment = (e) => {
     setComment({ ...comment, ['comment']: e.target.value });
@@ -245,8 +258,12 @@ const Edit = ({ blade, header, back, updateUrl }) => {
 
   const handleCreateComment = (e) => {
     e.preventDefault();
+    if (comment === '') {
+      alert('Kommentarfeltet kan ikke være tomt')
+    } else {
     createComment();
-    setOpenComments(true);
+    setOpenComments(true)
+    }
   };
 
   const okButton = () => {
@@ -261,97 +278,8 @@ const Edit = ({ blade, header, back, updateUrl }) => {
     setOpen(false);
   };
 
-  // {
-  //   if (openretipModal) {
-  //     return (
-  //       <div className={classes.modalContainer}>
-  //         <Grid container className={classes.modal}>
-  //           <Typography className={classes.modalHeader}>
-  //             En omlodding ble lagt til
-  //           </Typography>
-  //           <Grid item className={classes.performerBox}>
-  //             <Typography className={classes.retipText}>
-  //               {performFilter[0]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {performFilter[1]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {performFilter[2]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {performFilter[3]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {performFilter[4]}
-  //             </Typography>
-  //             {showList.map((list) => {
-  //               return (
-  //                 <div>
-  //                   <Typography className={classes.newPerformer} variant="h5">
-  //                     {list.performer}
-  //                   </Typography>
-  //                 </div>
-  //               );
-  //             })}
-  //           </Grid>
-  //           <Grid item className={classes.dateBox}>
-  //             <Typography className={classes.retipText}>
-  //               {dateFilter[0]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {dateFilter[1]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {dateFilter[2]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {dateFilter[3]}
-  //             </Typography>
-  //             <Typography className={classes.retipText}>
-  //               {dateFilter[4]}
-  //             </Typography>
-              
-  //             {showList.map((list) => {
-  //               return (
-  //                 <div>
-                  
-  //                   <Typography className={classes.newPerformer} variant="h5">
-  //                     {list.date}
-  //                   </Typography>
-  //                 </div>
-  //               );
-  //             })}
-  //           </Grid>
-  //           <Grid item>
-  //             <Button
-  //               onClick={okButton}
-  //               className={classes.okBtn}
-  //               variant="contained"
-  //             >
-  //               OK
-  //             </Button>
-  //           </Grid>
-  //         </Grid>
-  //       </div>
-  //     );
-  //   }
-  // }
-  // {
-  //   if (openComments) {
-  //     return (
-  //       <div className={classes.modalContainer}>
-  //         <Typography>En kommentar ble lagt til</Typography>
-
-  //         <Typography>{blade.comment}</Typography>
-
-  //         <Button onClick={commentOkBtn} variant="contained">
-  //           OK
-  //         </Button>
-  //       </div>
-  //     );
-  //   }
-  // }
+  
+  
   return (
     <div className={classes.mainContainer}>
       <Container>
@@ -465,12 +393,18 @@ const Edit = ({ blade, header, back, updateUrl }) => {
           </Grid>
         </Grid>
         <Grid container>
-          {blade.comment[0]}
-          {blade.comment[1]}
-          {blade.comment[2]}
-          {blade.comment[3]}
+        <ul>
+          <li>{blade.comment[0]}</li>
+          <li>{blade.comment[1]}</li>
+          <li>{blade.comment[2]}</li>
+          <li>{blade.comment[3]}</li>
+        </ul>
+          
+          
+          
+          
         </Grid>
-
+{/* 
         <Grid item>
           <Typography className={classes.retipHeader} variant="h4">
             Tidligere omloddinger
@@ -534,7 +468,7 @@ const Edit = ({ blade, header, back, updateUrl }) => {
               })}
             </Grid>
           </Grid>
-        </Grid>
+        </Grid> */}
 
 
         <Dialog
