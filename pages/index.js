@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles, Input, Grid, TextField, Button, Typography } from '@material-ui/core';
 import Link from 'next/link'
+import Redirect from '../components/shared/Redirect';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -38,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const index = (props) => {
+
+ 
  
   const classes = useStyles();
   return (
